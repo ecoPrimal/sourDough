@@ -24,13 +24,16 @@ use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
 use tokio::net::UnixStream;
 
 /// A canary method that no primal should recognize.
+#[cfg_attr(not(unix), allow(dead_code))]
 const CANARY_METHOD: &str = "__sourDough_rpc_audit_canary_9f3a7b2e";
 
+#[cfg_attr(not(unix), allow(dead_code))]
 struct AuditResult {
     primal_name: Option<String>,
     findings: Vec<Finding>,
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 struct Finding {
     category: &'static str,
     method: String,
@@ -38,6 +41,7 @@ struct Finding {
     message: String,
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Severity {
     Pass,
@@ -296,6 +300,7 @@ fn evaluate_method_response(
     }
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 fn responses_match(
     a: &std::result::Result<String, String>,
     b: &std::result::Result<String, String>,
@@ -315,6 +320,7 @@ fn responses_match(
     a_json.get("result") == b_json.get("result")
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 fn default_probe_methods() -> Vec<String> {
     vec![
         "health.liveness".to_owned(),
@@ -355,6 +361,7 @@ async fn send_rpc(
     }
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 fn compliance_level(findings: &[Finding]) -> &'static str {
     let has_health_fallback = findings
         .iter()
@@ -375,6 +382,7 @@ fn compliance_level(findings: &[Finding]) -> &'static str {
     }
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 fn print_json(socket: &Path, result: &AuditResult) {
     let level = compliance_level(&result.findings);
     let name = result
@@ -420,6 +428,7 @@ fn print_json(socket: &Path, result: &AuditResult) {
     println!("}}");
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 fn print_human(socket: &Path, result: &AuditResult) {
     let level = compliance_level(&result.findings);
     let name = result.primal_name.as_deref().unwrap_or("unknown");

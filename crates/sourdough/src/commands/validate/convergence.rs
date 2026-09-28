@@ -26,6 +26,7 @@ struct ProbeResult {
     latency_ms: u64,
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum ProbeStatus {
     Alive,
@@ -85,6 +86,7 @@ async fn validate_async(socket_dir: &Path, json: bool, timeout_ms: u64) -> Resul
     Ok(())
 }
 
+#[cfg_attr(not(unix), allow(dead_code))]
 fn elapsed_ms(start: std::time::Instant) -> u64 {
     u64::try_from(start.elapsed().as_millis()).unwrap_or(u64::MAX)
 }
