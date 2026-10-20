@@ -223,7 +223,73 @@ tier       = "full"
 gate       = "vineGate"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# APPENDIX B: ATOMIC COMPOSITION LAYERS
+# APPENDIX B-1: MEMBRANE SERVICE TOPOLOGY (bingo cube — atomic, not enumerated)
+#
+# Ports are a bingo cube solve: one binary, N ports, handed to tower as
+# a single atomic config. Never enumerate ports individually.
+#
+# Opsonize: immune tagging + traces + discuss + gate-msg + membrane analysis
+# Binary:   /opt/ecoPrimals/opsonize/opsonize-rs (2.7MB, release, stripped)
+# Service:  opsonize.service (systemd)
+# VPS:      golgi (git.primals.eco)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[membrane.opsonize]
+binary   = "/opt/ecoPrimals/opsonize/opsonize-rs"
+service  = "opsonize.service"
+host     = "golgi"
+domain   = "immune"
+atomic   = true  # one binary, four ports — bingo cube, not enumeration
+
+[[membrane.opsonize.ports]]
+name       = "opsonize"
+port       = 8095
+protocol   = "tcp"
+caddy_path = "/api/opsonize*"
+purpose    = "immune tagging — visitor signals, epitope classification"
+
+[[membrane.opsonize.ports]]
+name       = "traces"
+port       = 8096
+protocol   = "tcp"
+caddy_path = "/api/traces"
+purpose    = "visitor traces — session paths, heatmap"
+
+[[membrane.opsonize.ports]]
+name       = "discuss"
+port       = 8097
+protocol   = "tcp"
+caddy_path = "/api/discuss*"
+purpose    = "membrane-native discussion — sovereign comment relay"
+
+[[membrane.opsonize.ports]]
+name       = "gate_msg"
+port       = 9761
+protocol   = "tcp"
+caddy_path = "/api/gate-msg*"
+purpose    = "inter-gate message relay — saloon doors, swings both ways"
+
+[membrane.opsonize.analysis]
+fleet     = "fleet-analysis.json"
+self_rem  = "self-remainder.json"
+negentropy = "negentropy.json"
+eye       = "silicon-eye.json"
+interval  = 300  # seconds — tempo-relative on the membrane
+
+# Three-Sort topology (paper 84)
+# These are NOT separate services. They are measurements of the SAME system.
+[membrane.twist]
+green_line   = "structural complexity floor — cannot compress past this"
+brown_line   = "permanence floor — what loamSpine has committed"
+twist_rate   = "how fast green and brown interleave — tighter is better"
+pink         = "L/R — human signal, Shannon entropy (scan-sweep-sort worldclock)"
+green        = "Up/Down — structural complexity, voxel confidence"
+blue         = "hypotenuse — identity, the pair, remainder → 2/π"
+data_file    = "twist.json"
+pipeline_stage = 7  # SCAN→SWEEP→SORT→FOSSILIZE→EVOLVE→TWIST
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-2: ATOMIC COMPOSITION LAYERS
 #
 # Each tier is a strict superset of the previous.
 # The organism grows by adding layers, not replacing them.
