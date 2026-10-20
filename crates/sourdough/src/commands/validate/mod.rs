@@ -5,6 +5,7 @@ mod convergence;
 mod deps;
 mod depot;
 mod ecobin;
+mod mass;
 mod neural_api;
 mod platform_paths;
 mod platform_substrate;
@@ -177,6 +178,22 @@ pub(crate) enum ValidateCommand {
         json: bool,
     },
 
+    /// Stoichiometric mass sort — Shannon entropy page weights for Zola sites
+    #[command(name = "mass")]
+    Mass {
+        /// Path to the Zola site content directory
+        #[arg(default_value = ".")]
+        content_dir: PathBuf,
+
+        /// Actually write weights into frontmatter (default: dry run)
+        #[arg(long)]
+        apply: bool,
+
+        /// Output as JSON (machine-readable)
+        #[arg(long)]
+        json: bool,
+    },
+
     /// G72 Dependency Pandemic audit (bloated features, excisable crates, version drift)
     #[command(name = "deps")]
     Deps {
@@ -254,6 +271,11 @@ pub(crate) fn run(cmd: ValidateCommand) -> Result<()> {
             let dir = socket_dir.unwrap_or_else(default_socket_dir);
             convergence::validate(&dir, json, timeout_ms)
         }
+        ValidateCommand::Mass {
+            content_dir,
+            apply,
+            json,
+        } => mass::validate(&content_dir, json, apply),
         ValidateCommand::Deps { path, json } => deps::validate(&path, json),
         ValidateCommand::Depot {
             depot_dir,

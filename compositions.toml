@@ -76,3 +76,170 @@ primals = [
     "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
     "biomeos", "squirrel",
 ]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX A: PRIMAL TAXONOMY
+#
+# bearDog genetics classifies the OUTSIDE (entropy hierarchy, ecosystem membership).
+# This appendix classifies OURSELVES — the organism's self-knowledge.
+#
+# Each primal has:
+#   domain     — biological layer it maps to
+#   role       — function in the organism
+#   symbiosis  — what it gives / receives
+#   mass       — relative information weight in the ecosystem (1-200)
+#   tier       — atomic tier where it first appears (tower < node < nest < nucleus < meta < full)
+#   gate       — canonical gate identity
+#
+# Sorted by mass (stoichiometric — heaviest first).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[taxonomy.beardog]
+domain     = "immune"
+role       = "Cryptographic identity, signing, entropy hierarchy, genetic evolution"
+symbiosis  = "protective — signs for all, trusts none by default"
+mass       = 200
+tier       = "tower"
+gate       = "guardGate"
+
+[taxonomy.loamspine]
+domain     = "permanence"
+role       = "Append-only spine, certificate ledger, public chain anchoring"
+symbiosis  = "facilitative — provides permanent record for all braids"
+mass       = 190
+tier       = "nest"
+gate       = "ironGate"
+
+[taxonomy.sweetgrass]
+domain     = "provenance"
+role       = "PROV-O braid attribution, compression, cross-gate trust"
+symbiosis  = "mutualistic — braids anchor to loamSpine, sign via bearDog"
+mass       = 185
+tier       = "nest"
+gate       = "strandGate"
+
+[taxonomy.toadstool]
+domain     = "neuromorphic"
+role       = "NPU driver, VFIO sovereign handoff, inference engine"
+symbiosis  = "facilitative — provides compute substrate for all primals"
+mass       = 175
+tier       = "node"
+gate       = "soverGate"
+
+[taxonomy.rhizocrypt]
+domain     = "ephemeral"
+role       = "DAG workspace, sessions, merkle trees, dehydration to loamSpine"
+symbiosis  = "commensal — temporary state that compresses into braids"
+mass       = 170
+tier       = "nest"
+gate       = "deepGate"
+
+[taxonomy.skunkbat]
+domain     = "defense"
+role       = "Threat detection, scatter defense, antibody generation, fleet sort"
+symbiosis  = "protective — defends the membrane surface"
+mass       = 165
+tier       = "tower"
+gate       = "shieldGate"
+
+[taxonomy.songbird]
+domain     = "network"
+role       = "TLS, mesh federation, gossip protocol, trust escalation"
+symbiosis  = "mutualistic — carries signals between all gates"
+mass       = 160
+tier       = "tower"
+gate       = "echoGate"
+
+[taxonomy.squirrel]
+domain     = "observation"
+role       = "scan-sweep-sort pipeline, braid learning, genome totality, worldclock"
+symbiosis  = "commensal — observes without altering, feeds dashboard"
+mass       = 155
+tier       = "meta"
+gate       = "cacheGate"
+
+[taxonomy.biomeos]
+domain     = "orchestration"
+role       = "Atomic deploy, composition management, capability routing"
+symbiosis  = "emergent — coordinates all primals, no fixed hierarchy"
+mass       = 150
+tier       = "meta"
+gate       = "rootGate"
+
+[taxonomy.barracuda]
+domain     = "compute"
+role       = "GPU/tensor ops, triplet loss, bbox, anchor generation"
+symbiosis  = "facilitative — provides SIMD/GPU compute for inference"
+mass       = 140
+tier       = "node"
+gate       = "fastGate"
+
+[taxonomy.nestgate]
+domain     = "storage"
+role       = "Content-addressed payload storage, workspace management"
+symbiosis  = "facilitative — stores what rhizoCrypt and sweetGrass produce"
+mass       = 135
+tier       = "nest"
+gate       = "nestGate"
+
+[taxonomy.coralreef]
+domain     = "transport"
+role       = "Cross-primal RPC relay, protocol negotiation, signal routing"
+symbiosis  = "mutualistic — connects primals that cannot reach each other directly"
+mass       = 130
+tier       = "node"
+gate       = "reefGate"
+
+[taxonomy.petaltongue]
+domain     = "visualization"
+role       = "Scene graph, SVG rendering, dashboard, gate mesh display"
+symbiosis  = "commensal — renders what others produce, writes nothing"
+mass       = 120
+tier       = "meta"
+gate       = "lensGate"
+
+[taxonomy.bingocube]
+domain     = "games"
+role       = "Probabilistic games, interactive demos, engagement"
+symbiosis  = "mutualistic — teaches ecosystem concepts through play"
+mass       = 100
+tier       = "full"
+gate       = "playGate"
+
+[taxonomy.sourdough]
+domain     = "tooling"
+role       = "Scaffold, validate, CI, sign, mass sort — ecosystem tooling primal"
+symbiosis  = "facilitative — builds and validates all other primals"
+mass       = 145
+tier       = "meta"
+gate       = "yeastGate"
+
+[taxonomy.swarmvine]
+domain     = "distributed"
+role       = "Swarm coordination, distributed task execution"
+symbiosis  = "emergent — extends organism across multiple hosts"
+mass       = 110
+tier       = "full"
+gate       = "vineGate"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B: ATOMIC COMPOSITION LAYERS
+#
+# Each tier is a strict superset of the previous.
+# The organism grows by adding layers, not replacing them.
+#
+#   tower    (3)  — minimal viable: identity + network + defense
+#   node     (6)  — + compute substrate: neuromorphic + GPU + transport
+#   nest     (7)  — + provenance trio: permanence + ephemeral + attribution + storage
+#   nucleus (10)  — tower ∪ node ∪ nest = full core
+#   meta     (3)  — orchestration + observation + visualization
+#   full    (14+) — nucleus + meta + specialist primals
+#
+# Mass totals per tier:
+#   tower    = 525  (beardog 200 + songbird 160 + skunkbat 165)
+#   node     = 970  (tower + toadstool 175 + barracuda 140 + coralreef 130)
+#   nest     = 1205 (tower + loamspine 190 + sweetgrass 185 + rhizocrypt 170 + nestgate 135 + skunkbat + songbird)
+#   nucleus  = 1650 (node ∪ nest)
+#   meta     = 425  (biomeos 150 + squirrel 155 + petaltongue 120)
+#   full     = 2275 (nucleus + meta + bingocube 100 + sourdough 145 — self-referential)
+# ═══════════════════════════════════════════════════════════════════════════════
