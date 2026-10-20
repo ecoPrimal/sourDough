@@ -289,7 +289,50 @@ data_file    = "twist.json"
 pipeline_stage = 7  # SCAN→SWEEP→SORT→FOSSILIZE→EVOLVE→TWIST
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# APPENDIX B-2: ATOMIC COMPOSITION LAYERS
+# APPENDIX B-2: CIRCLE OF WILLIS — Relay Topology
+#
+# Named after the redundant arterial circle at the base of the brain.
+# If one artery is blocked, blood still reaches every region.
+# Same pattern: if Forgejo (inner) fails → GitHub (outer) takes over.
+#               if GitHub fails → Forgejo inner path still works.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[membrane.relay]
+pattern = "circle-of-willis"
+description = "redundant circulatory anastomosis — no single point of failure"
+
+[[membrane.relay.arteries]]
+name    = "inner"
+path    = "eastGate → golgi(Forgejo:2222) → golgi-ext(rsync/WireGuard)"
+method  = "rsync"
+speed   = "fast"
+depends = "forgejo"
+
+[[membrane.relay.arteries]]
+name    = "outer"
+path    = "eastGate → GitHub → golgi-ext(https fetch)"
+method  = "git-fetch"
+speed   = "moderate"
+depends = "github"
+
+[membrane.relay.forgejo]
+binary    = "/opt/membrane/forgejo"
+config    = "/opt/forgejo/custom/conf/app.ini"
+http_port = 3000
+ssh_port  = 2222
+host      = "golgi"
+domain    = "git.primals.eco"
+repo_root = "/opt/forgejo/data/repositories"
+version   = "9.0.3"
+
+[membrane.relay.sync]
+script   = "/opt/nucleus/sync-repos.sh"
+host     = "golgi-ext"
+strategy = "try forgejo first, fallback to github"
+repos    = ["detroit", "wateringHole", "thesis", "signal"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-3: ATOMIC COMPOSITION LAYERS
 #
 # Each tier is a strict superset of the previous.
 # The organism grows by adding layers, not replacing them.
