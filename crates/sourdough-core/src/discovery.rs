@@ -12,7 +12,6 @@
 //! - **tarpc** (`tarpc_endpoint`): binary framing, intra-gate, sub-ms
 
 use crate::error::PrimalError;
-use crate::identity::Did;
 use serde::{Deserialize, Serialize};
 
 /// Which protocols a primal supports for IPC.
@@ -246,42 +245,45 @@ pub struct RegistrationHandle {
     pub registered_at: crate::types::Timestamp,
 }
 
-/// Information about a discovered service.
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct ServiceInfo {
-    /// Service name.
-    pub name: String,
-    /// Service version.
-    pub version: String,
-    /// JSON-RPC endpoint (always present).
-    pub endpoint: String,
-    /// tarpc binary endpoint (present for cephalization-era primals).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub tarpc_endpoint: Option<String>,
-    /// Which protocols this service supports.
-    #[serde(default)]
-    pub protocol_support: ProtocolSupport,
-    /// Service DID.
-    pub did: Did,
-    /// Service capabilities.
-    pub capabilities: Vec<String>,
+/// Information about a discovered service — canonical form from `cellmembrane-types`.
+///
+/// Organism-specific fields (did, protocol_support, is_family, endpoint,
+/// tarpc_endpoint) are mapped via the `ServiceInfoExt` extension trait
+/// and canonical `endpoints` / `metadata`.
+pub use cellmembrane_types::ServiceInfo;
+
+/// Extension methods for sourDough-specific discovery patterns.
+pub trait ServiceInfoExt {
+    /// Get the best endpoint for high-performance intra-gate calls.
+    /// Returns the tarpc endpoint if available, falls back to the first endpoint.
+    fn best_endpoint(&self) -> Option<&str>;
+    /// Whether this service supports tarpc binary protocol.
+    fn supports_tarpc(&self) -> bool;
+    /// Get the DID from metadata.
+    fn did(&self) -> Option<&str>;
     /// Whether this service is in our lineage.
-    pub is_family: bool,
+    fn is_family(&self) -> bool;
 }
 
-impl ServiceInfo {
-    /// Get the best endpoint for high-performance intra-gate calls.
-    ///
-    /// Returns the tarpc endpoint if available, falls back to JSON-RPC.
-    #[must_use]
-    pub fn best_endpoint(&self) -> &str {
-        self.tarpc_endpoint.as_deref().unwrap_or(&self.endpoint)
+impl ServiceInfoExt for ServiceInfo {
+    fn best_endpoint(&self) -> Option<&str> {
+        self.endpoints
+            .iter()
+            .find(|e| e.starts_with("tarpc:"))
+            .or_else(|| self.endpoints.first())
+            .map(String::as_str)
     }
 
-    /// Whether this service supports tarpc binary protocol.
-    #[must_use]
-    pub const fn supports_tarpc(&self) -> bool {
-        self.tarpc_endpoint.is_some()
+    fn supports_tarpc(&self) -> bool {
+        self.endpoints.iter().any(|e| e.starts_with("tarpc:"))
+    }
+
+    fn did(&self) -> Option<&str> {
+        self.metadata.get("did").map(String::as_str)
+    }
+
+    fn is_family(&self) -> bool {
+        self.metadata.get("is_family").is_some_and(|v| v == "true")
     }
 }
 
@@ -341,50 +343,43 @@ mod tests {
 
     #[test]
     fn service_info_serialization() {
-        let info = ServiceInfo {
-            name: "test".to_string(),
-            version: "1.0.0".to_string(),
-            endpoint: "http://test".to_string(),
-            tarpc_endpoint: None,
-            protocol_support: ProtocolSupport::JsonRpcOnly,
-            did: Did::new("did:key:test123"),
-            capabilities: vec!["storage".to_string()],
-            is_family: true,
-        };
+        let mut info = ServiceInfo::new("test-1", "test")
+            .with_version("1.0.0")
+            .with_endpoint("http://test")
+            .with_capability("storage");
+        info.metadata.insert("did".into(), "did:key:test123".into());
+        info.metadata.insert("is_family".into(), "true".into());
+        info.metadata.insert("protocol_support".into(), "jsonrpc".into());
 
         let json = serde_json::to_string(&info).unwrap();
         let parsed: ServiceInfo = serde_json::from_str(&json).unwrap();
 
         assert_eq!(info.name, parsed.name);
-        assert_eq!(info.is_family, parsed.is_family);
+        assert!(parsed.is_family());
         assert!(!parsed.supports_tarpc());
-        assert_eq!(parsed.best_endpoint(), "http://test");
+        assert_eq!(parsed.best_endpoint(), Some("http://test"));
     }
 
     #[test]
     fn service_info_dual_protocol() {
-        let info = ServiceInfo {
-            name: "fast-primal".to_string(),
-            version: "2.0.0".to_string(),
-            endpoint: "unix:///run/user/1000/biomeos/fast-primal.sock".to_string(),
-            tarpc_endpoint: Some(
-                "unix:///run/user/1000/biomeos/fast-primal.tarpc.sock".to_string(),
-            ),
-            protocol_support: ProtocolSupport::DualProtocol,
-            did: Did::new("did:key:fast123"),
-            capabilities: vec!["compute".to_string()],
-            is_family: true,
-        };
+        let mut info = ServiceInfo::new("fast-1", "fast-primal")
+            .with_version("2.0.0")
+            .with_endpoint("unix:///run/user/1000/biomeos/fast-primal.sock")
+            .with_endpoint("tarpc:unix:///run/user/1000/biomeos/fast-primal.tarpc.sock")
+            .with_capability("compute");
+        info.metadata.insert("did".into(), "did:key:fast123".into());
+        info.metadata.insert("is_family".into(), "true".into());
+        info.metadata.insert("protocol_support".into(), "dual".into());
 
         assert!(info.supports_tarpc());
         assert_eq!(
             info.best_endpoint(),
-            "unix:///run/user/1000/biomeos/fast-primal.tarpc.sock"
+            Some("tarpc:unix:///run/user/1000/biomeos/fast-primal.tarpc.sock")
         );
 
         let json = serde_json::to_string(&info).unwrap();
         let parsed: ServiceInfo = serde_json::from_str(&json).unwrap();
-        assert_eq!(parsed.protocol_support, ProtocolSupport::DualProtocol);
+        assert_eq!(parsed.metadata.get("protocol_support").map(String::as_str), Some("dual"));
         assert!(parsed.supports_tarpc());
     }
 
@@ -449,13 +444,13 @@ mod tests {
     }
 
     #[test]
-    fn service_info_backward_compat_deserialization() {
-        let legacy_json = r#"{"name":"old","version":"0.1.0","endpoint":"unix:///tmp/old.sock","did":"did:key:old","capabilities":["health"],"is_family":false}"#;
-        let info: ServiceInfo = serde_json::from_str(legacy_json).unwrap();
-        assert_eq!(info.tarpc_endpoint, None);
-        assert_eq!(info.protocol_support, ProtocolSupport::default());
+    fn service_info_canonical_defaults() {
+        let info = ServiceInfo::new("old-1", "old")
+            .with_version("0.1.0")
+            .with_endpoint("unix:///tmp/old.sock")
+            .with_capability("health");
         assert!(!info.supports_tarpc());
-        assert_eq!(info.best_endpoint(), "unix:///tmp/old.sock");
+        assert_eq!(info.best_endpoint(), Some("unix:///tmp/old.sock"));
     }
 
     #[test]
@@ -577,24 +572,18 @@ mod tests {
                 "unix:///tmp/[a-z]+\\.sock",
                 proptest::option::of("unix:///tmp/[a-z]+\\.tarpc\\.sock"),
                 prop::collection::vec("[a-z]+", 0..5),
-                any::<bool>(),
             )
-                .prop_map(|(name, version, endpoint, tarpc_ep, caps, is_family)| {
-                    let protocol_support = if tarpc_ep.is_some() {
-                        ProtocolSupport::DualProtocol
-                    } else {
-                        ProtocolSupport::JsonRpcOnly
-                    };
-                    ServiceInfo {
-                        name,
-                        version,
-                        endpoint,
-                        tarpc_endpoint: tarpc_ep,
-                        protocol_support,
-                        did: Did::new("did:key:test"),
-                        capabilities: caps,
-                        is_family,
+                .prop_map(|(name, version, endpoint, tarpc_ep, caps)| {
+                    let mut info = ServiceInfo::new(&name, &name)
+                        .with_version(&version)
+                        .with_endpoint(&endpoint);
+                    if let Some(tarpc) = &tarpc_ep {
+                        info = info.with_endpoint(format!("tarpc:{tarpc}"));
                     }
+                    for cap in &caps {
+                        info = info.with_capability(cap);
+                    }
+                    info
                 })
         }
 
@@ -613,20 +602,18 @@ mod tests {
                 let json = serde_json::to_string(&info).unwrap();
                 let back: ServiceInfo = serde_json::from_str(&json).unwrap();
                 prop_assert_eq!(&info.name, &back.name);
-                prop_assert_eq!(&info.version, &back.version);
-                prop_assert_eq!(&info.endpoint, &back.endpoint);
-                prop_assert_eq!(&info.tarpc_endpoint, &back.tarpc_endpoint);
-                prop_assert_eq!(&info.protocol_support, &back.protocol_support);
-                prop_assert_eq!(info.is_family, back.is_family);
+                prop_assert_eq!(&info.endpoints, &back.endpoints);
+                prop_assert_eq!(&info.capabilities, &back.capabilities);
             }
 
             #[test]
             fn service_info_best_endpoint_prefers_tarpc(info in arb_service_info()) {
                 let best = info.best_endpoint();
-                if let Some(tarpc) = &info.tarpc_endpoint {
-                    prop_assert_eq!(best, tarpc.as_str());
+                let has_tarpc = info.endpoints.iter().any(|e| e.starts_with("tarpc:"));
+                if has_tarpc {
+                    prop_assert!(best.unwrap().starts_with("tarpc:"));
                 } else {
-                    prop_assert_eq!(best, info.endpoint.as_str());
+                    prop_assert_eq!(best, info.endpoints.first().map(|s| s.as_str()));
                 }
             }
 

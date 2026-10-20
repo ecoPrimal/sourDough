@@ -30,6 +30,9 @@ codegen-units = 1
 strip = true
 
 [workspace.dependencies]
+# Canonical ecosystem types (cellMembrane agglutinated forms)
+cellmembrane-types = { path = "../../gardens/cellMembrane/crates/cellmembrane-types" }
+
 # Async runtime — per-crate feature selection for compile time
 tokio = { version = "1.40", default-features = false }
 

@@ -8,6 +8,9 @@ repository.workspace = true
 authors.workspace = true
 
 [dependencies]
+# Canonical ecosystem types
+cellmembrane-types = { workspace = true }
+
 # Async
 tokio = { workspace = true, features = ["io-util", "net", "time", "rt", "signal"] }
 

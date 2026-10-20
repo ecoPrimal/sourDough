@@ -5,7 +5,6 @@
 //! method naming standard (`domain.verb` pattern).
 
 use crate::error::PrimalError;
-use serde::{Deserialize, Serialize};
 
 /// JSON-RPC 2.0 version constant.
 pub const JSONRPC_VERSION: &str = "2.0";
@@ -48,108 +47,60 @@ pub const RATE_LIMITED: i32 = -32003;
 /// Not ready (primal starting up).
 pub const NOT_READY: i32 = -32004;
 
-// --- Request / Response / Error types ---
+// --- Canonical types from cellmembrane-types ---
 
-/// JSON-RPC 2.0 request.
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct JsonRpcRequest {
-    /// Protocol version (always "2.0").
-    pub jsonrpc: String,
-    /// Method name using `domain.verb` semantic naming.
-    pub method: String,
-    /// Parameters (positional or named).
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub params: Option<serde_json::Value>,
-    /// Request ID (null for notifications).
-    pub id: Option<serde_json::Value>,
+pub use cellmembrane_types::{JsonRpcError, JsonRpcRequest, JsonRpcResponse};
+
+/// Extension methods for `JsonRpcRequest` (sourDough builder API).
+pub trait JsonRpcRequestExt {
+    /// Set parameters after construction.
+    fn with_params(self, params: serde_json::Value) -> JsonRpcRequest;
 }
 
-impl JsonRpcRequest {
-    /// Create a new request.
-    #[must_use]
-    pub fn new(method: impl Into<String>, id: impl Into<serde_json::Value>) -> Self {
-        Self {
-            jsonrpc: JSONRPC_VERSION.to_string(),
-            method: method.into(),
-            params: None,
-            id: Some(id.into()),
-        }
-    }
-
-    /// Create a request with parameters.
-    #[must_use]
-    pub fn with_params(mut self, params: serde_json::Value) -> Self {
+impl JsonRpcRequestExt for JsonRpcRequest {
+    fn with_params(mut self, params: serde_json::Value) -> Self {
         self.params = Some(params);
         self
     }
-
-    /// Create a notification (no response expected).
-    #[must_use]
-    pub fn notification(method: impl Into<String>) -> Self {
-        Self {
-            jsonrpc: JSONRPC_VERSION.to_string(),
-            method: method.into(),
-            params: None,
-            id: None,
-        }
-    }
 }
 
-/// JSON-RPC 2.0 response.
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct JsonRpcResponse {
-    /// Protocol version.
-    pub jsonrpc: String,
-    /// Result (present on success).
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub result: Option<serde_json::Value>,
-    /// Error (present on failure).
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub error: Option<JsonRpcError>,
-    /// Request ID correlation.
-    pub id: Option<serde_json::Value>,
+/// Extension methods for `JsonRpcResponse` (sourDough API).
+pub trait JsonRpcResponseExt {
+    /// Create an error response from an error object.
+    fn error_from(id: Option<serde_json::Value>, error: JsonRpcError) -> JsonRpcResponse;
 }
 
-impl JsonRpcResponse {
-    /// Create a success response.
-    #[must_use]
-    pub fn success(id: serde_json::Value, result: serde_json::Value) -> Self {
+impl JsonRpcResponseExt for JsonRpcResponse {
+    fn error_from(id: Option<serde_json::Value>, error: JsonRpcError) -> Self {
         Self {
-            jsonrpc: JSONRPC_VERSION.to_string(),
-            result: Some(result),
-            error: None,
-            id: Some(id),
-        }
-    }
-
-    /// Create an error response.
-    #[must_use]
-    pub fn error(id: Option<serde_json::Value>, error: JsonRpcError) -> Self {
-        Self {
-            jsonrpc: JSONRPC_VERSION.to_string(),
+            jsonrpc: "2.0".into(),
             result: None,
             error: Some(error),
-            id,
+            id: id.unwrap_or(serde_json::Value::Null),
         }
     }
 }
 
-/// JSON-RPC 2.0 error object.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct JsonRpcError {
-    /// Error code.
-    pub code: i32,
-    /// Human-readable message.
-    pub message: String,
-    /// Additional data.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub data: Option<serde_json::Value>,
+/// Extension methods for `JsonRpcError` (sourDough ecosystem-specific).
+pub trait JsonRpcErrorExt {
+    /// Create a new error.
+    fn new(code: i32, message: impl Into<String>) -> JsonRpcError;
+    /// Attach additional data.
+    fn with_data(self, data: serde_json::Value) -> JsonRpcError;
+    /// Standard: parse error.
+    fn parse_error(detail: impl Into<String>) -> JsonRpcError;
+    /// Standard: method not found.
+    fn method_not_found(method: &str) -> JsonRpcError;
+    /// Standard: internal error.
+    fn internal(detail: impl Into<String>) -> JsonRpcError;
+    /// ecoPrimals: circuit breaker open.
+    fn circuit_breaker_open(service: &str) -> JsonRpcError;
+    /// Whether this error is retryable.
+    fn is_retryable(&self) -> bool;
 }
 
-impl JsonRpcError {
-    /// Create a new error.
-    #[must_use]
-    pub fn new(code: i32, message: impl Into<String>) -> Self {
+impl JsonRpcErrorExt for JsonRpcError {
+    fn new(code: i32, message: impl Into<String>) -> Self {
         Self {
             code,
             message: message.into(),
@@ -157,43 +108,31 @@ impl JsonRpcError {
         }
     }
 
-    /// Attach additional data.
-    #[must_use]
-    pub fn with_data(mut self, data: serde_json::Value) -> Self {
+    fn with_data(mut self, data: serde_json::Value) -> Self {
         self.data = Some(data);
         self
     }
 
-    /// Standard: parse error.
-    #[must_use]
-    pub fn parse_error(detail: impl Into<String>) -> Self {
+    fn parse_error(detail: impl Into<String>) -> Self {
         Self::new(PARSE_ERROR, detail)
     }
 
-    /// Standard: method not found.
-    #[must_use]
-    pub fn method_not_found(method: &str) -> Self {
+    fn method_not_found(method: &str) -> Self {
         Self::new(METHOD_NOT_FOUND, format!("method not found: {method}"))
     }
 
-    /// Standard: internal error.
-    #[must_use]
-    pub fn internal(detail: impl Into<String>) -> Self {
+    fn internal(detail: impl Into<String>) -> Self {
         Self::new(INTERNAL_ERROR, detail)
     }
 
-    /// ecoPrimals: circuit breaker open.
-    #[must_use]
-    pub fn circuit_breaker_open(service: &str) -> Self {
+    fn circuit_breaker_open(service: &str) -> Self {
         Self::new(
             CIRCUIT_BREAKER_OPEN,
             format!("circuit breaker open for {service}"),
         )
     }
 
-    /// Whether this error is retryable.
-    #[must_use]
-    pub const fn is_retryable(&self) -> bool {
+    fn is_retryable(&self) -> bool {
         matches!(
             self.code,
             SERVICE_UNAVAILABLE | DEPENDENCY_FAILURE | RATE_LIMITED | NOT_READY
@@ -203,13 +142,11 @@ impl JsonRpcError {
 
 impl From<PrimalError> for JsonRpcError {
     fn from(err: PrimalError) -> Self {
-        match &err {
-            PrimalError::Network(_) | PrimalError::Timeout(_) => {
-                Self::new(SERVICE_UNAVAILABLE, err.to_string())
-            }
-            PrimalError::Dependency { .. } => Self::new(DEPENDENCY_FAILURE, err.to_string()),
-            PrimalError::InvalidInput(_) => Self::new(INVALID_PARAMS, err.to_string()),
-            PrimalError::NotFound(_) => Self::new(METHOD_NOT_FOUND, err.to_string()),
+        let code = match &err {
+            PrimalError::Network(_) | PrimalError::Timeout(_) => SERVICE_UNAVAILABLE,
+            PrimalError::Dependency { .. } => DEPENDENCY_FAILURE,
+            PrimalError::InvalidInput(_) => INVALID_PARAMS,
+            PrimalError::NotFound(_) => METHOD_NOT_FOUND,
             PrimalError::Config(_)
             | PrimalError::Identity(_)
             | PrimalError::Discovery(_)
@@ -222,8 +159,9 @@ impl From<PrimalError> for JsonRpcError {
             | PrimalError::AlreadyExists(_)
             | PrimalError::PermissionDenied(_)
             | PrimalError::Internal(_)
-            | PrimalError::Domain { .. } => Self::new(INTERNAL_ERROR, err.to_string()),
-        }
+            | PrimalError::Domain { .. } => INTERNAL_ERROR,
+        };
+        Self { code, message: err.to_string(), data: None }
     }
 }
 
@@ -233,7 +171,7 @@ mod tests {
 
     #[test]
     fn request_new_sets_version_and_id() {
-        let req = JsonRpcRequest::new("health.liveness", 1);
+        let req = JsonRpcRequest::new("health.liveness", None, 1);
         assert_eq!(req.jsonrpc, "2.0");
         assert_eq!(req.method, "health.liveness");
         assert_eq!(req.id, Some(serde_json::json!(1)));
@@ -243,13 +181,13 @@ mod tests {
     #[test]
     fn request_with_params() {
         let req =
-            JsonRpcRequest::new("data.store", 42).with_params(serde_json::json!({"key": "value"}));
+            JsonRpcRequest::new("data.store", None, 42).with_params(serde_json::json!({"key": "value"}));
         assert_eq!(req.params.unwrap()["key"], "value");
     }
 
     #[test]
     fn notification_has_no_id() {
-        let notif = JsonRpcRequest::notification("lifecycle.shutdown");
+        let notif = JsonRpcRequest::notification("lifecycle.shutdown", None);
         assert!(notif.id.is_none());
         assert_eq!(notif.method, "lifecycle.shutdown");
     }
@@ -257,7 +195,7 @@ mod tests {
     #[test]
     fn request_serde_roundtrip() {
         let req =
-            JsonRpcRequest::new("test.method", 7).with_params(serde_json::json!({"arg": true}));
+            JsonRpcRequest::new("test.method", None, 7).with_params(serde_json::json!({"arg": true}));
         let json = serde_json::to_string(&req).unwrap();
         let back: JsonRpcRequest = serde_json::from_str(&json).unwrap();
         assert_eq!(back.method, "test.method");
@@ -267,7 +205,7 @@ mod tests {
 
     #[test]
     fn notification_serde_omits_id() {
-        let notif = JsonRpcRequest::notification("event.fired");
+        let notif = JsonRpcRequest::notification("event.fired", None);
         let json = serde_json::to_string(&notif).unwrap();
         assert!(!json.contains("\"id\"") || json.contains("\"id\":null"));
     }
@@ -279,13 +217,13 @@ mod tests {
         assert_eq!(resp.jsonrpc, "2.0");
         assert!(resp.result.is_some());
         assert!(resp.error.is_none());
-        assert_eq!(resp.id, Some(serde_json::json!(1)));
+        assert_eq!(resp.id, serde_json::json!(1));
     }
 
     #[test]
     fn response_error() {
         let err = JsonRpcError::method_not_found("bad.method");
-        let resp = JsonRpcResponse::error(Some(serde_json::json!(2)), err);
+        let resp = JsonRpcResponse::error_from(Some(serde_json::json!(2)), err);
         assert!(resp.result.is_none());
         assert!(resp.error.is_some());
         assert_eq!(resp.error.unwrap().code, METHOD_NOT_FOUND);
@@ -303,7 +241,7 @@ mod tests {
     #[test]
     fn response_serde_roundtrip_error() {
         let err = JsonRpcError::internal("something broke");
-        let resp = JsonRpcResponse::error(Some(serde_json::json!(3)), err);
+        let resp = JsonRpcResponse::error_from(Some(serde_json::json!(3)), err);
         let json = serde_json::to_string(&resp).unwrap();
         let back: JsonRpcResponse = serde_json::from_str(&json).unwrap();
         assert!(back.result.is_none());

@@ -2,7 +2,7 @@
 
 use super::Capability;
 use super::error::{IpcError, IpcErrorKind};
-use super::protocol::{JsonRpcRequest, JsonRpcResponse, MESH_RELAY_TIMEOUT};
+use super::protocol::{JsonRpcRequest, JsonRpcRequestExt, JsonRpcResponse, MESH_RELAY_TIMEOUT};
 use crate::transport::{self, TransportEndpoint};
 use crate::{env_keys, methods};
 
@@ -119,7 +119,7 @@ impl IpcClient {
             .unwrap_or_else(|_| env_keys::DEFAULT_MESH_RELAY_HUB.to_owned());
         let songbird = Self::from_primal(&relay_hub, None);
         let envelope =
-            JsonRpcRequest::new(methods::capability::CALL, 1).with_params(serde_json::json!({
+            JsonRpcRequest::new(methods::capability::CALL, None, 1).with_params(serde_json::json!({
                 "peer_id": peer_id,
                 "capability": capability,
                 "request": request,
@@ -170,7 +170,7 @@ impl IpcClient {
     ///
     /// Returns [`IpcError`] if the transport connection fails.
     pub async fn health_liveness(&self) -> Result<bool, IpcError> {
-        let req = JsonRpcRequest::new(methods::health::LIVENESS, 1);
+        let req = JsonRpcRequest::new(methods::health::LIVENESS, None, 1);
         let resp = self.call(&req).await?;
         Ok(resp.error.is_none())
     }
@@ -194,7 +194,7 @@ impl IpcClient {
             "capabilities": capabilities,
             "endpoint": endpoint,
         });
-        let req = JsonRpcRequest::new(methods::ipc::REGISTER, 1).with_params(params);
+        let req = JsonRpcRequest::new(methods::ipc::REGISTER, None, 1).with_params(params);
         self.call(&req).await
     }
 
@@ -208,7 +208,7 @@ impl IpcClient {
     /// Returns [`IpcError`] if transport fails or songbird returns an error.
     pub async fn resolve_primal(&self, primal_name: &str) -> Result<TransportEndpoint, IpcError> {
         let params = serde_json::json!({ "primal": primal_name });
-        let req = JsonRpcRequest::new(methods::ipc::RESOLVE, 1).with_params(params);
+        let req = JsonRpcRequest::new(methods::ipc::RESOLVE, None, 1).with_params(params);
         let resp = self.call(&req).await?;
 
         let result = resp.result.ok_or_else(|| {
@@ -262,7 +262,7 @@ impl IpcClient {
             "capabilities": capabilities,
             "endpoint": endpoint,
         });
-        let req = JsonRpcRequest::new(methods::primal::ANNOUNCE, 1).with_params(params);
+        let req = JsonRpcRequest::new(methods::primal::ANNOUNCE, None, 1).with_params(params);
         self.call(&req).await
     }
 }
@@ -345,7 +345,7 @@ mod tests {
     #[tokio::test]
     async fn call_direct_to_nonexistent_socket_gives_transport_error() {
         let client = IpcClient::new(TransportEndpoint::uds("/tmp/nonexistent_test.sock"));
-        let req = JsonRpcRequest::new("health.liveness", 1);
+        let req = JsonRpcRequest::new("health.liveness", None, 1);
         let err = client.call(&req).await.unwrap_err();
         assert_eq!(err.kind, IpcErrorKind::Transport);
     }
@@ -353,7 +353,7 @@ mod tests {
     #[tokio::test]
     async fn call_mesh_relay_routes_through_hub() {
         let client = IpcClient::new(TransportEndpoint::mesh_relay("peer1", "cap1"));
-        let req = JsonRpcRequest::new("some.method", 1);
+        let req = JsonRpcRequest::new("some.method", None, 1);
         let result = client.call(&req).await;
         // Either transport error (no hub running) or a response (hub is running)
         match result {
@@ -370,7 +370,7 @@ mod tests {
     #[tokio::test]
     async fn call_with_timeout_respects_duration() {
         let client = IpcClient::new(TransportEndpoint::uds("/tmp/nonexistent_timeout_test.sock"));
-        let req = JsonRpcRequest::new("health.liveness", 1);
+        let req = JsonRpcRequest::new("health.liveness", None, 1);
         let err = client
             .call_with_timeout(&req, std::time::Duration::from_millis(10))
             .await
@@ -400,7 +400,7 @@ mod tests {
         });
 
         let client = IpcClient::new(TransportEndpoint::uds(sock_path.to_string_lossy().as_ref()));
-        let req = JsonRpcRequest::new("health.liveness", 1);
+        let req = JsonRpcRequest::new("health.liveness", None, 1);
         let resp = client.call(&req).await.unwrap();
 
         assert!(resp.error.is_none());

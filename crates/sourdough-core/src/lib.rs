@@ -55,7 +55,7 @@
 //! let songbird = IpcClient::from_primal("songbird", None);
 //!
 //! // Step 3: Make calls with timeout protection
-//! let req = JsonRpcRequest::new("health.liveness", 1);
+//! let req = JsonRpcRequest::new("health.liveness", None, 1);
 //! let resp = songbird.call_with_timeout(&req, DEFAULT_IPC_TIMEOUT).await?;
 //!
 //! // Step 4: Use connect_transport for raw stream access
@@ -95,7 +95,7 @@ pub use health::{DependencyHealth, HealthStatus, PrimalHealth};
 pub use identity::{Did, PrimalIdentity, Signature};
 pub use ipc::{
     Capability, DEFAULT_IPC_TIMEOUT, HealthProbe, IpcClient, IpcError, IpcErrorKind, JsonRpcError,
-    JsonRpcRequest, JsonRpcResponse,
+    JsonRpcErrorExt, JsonRpcRequest, JsonRpcRequestExt, JsonRpcResponse, JsonRpcResponseExt,
 };
 pub use lifecycle::{PrimalLifecycle, PrimalState};
 pub use protocol_negotiation::{

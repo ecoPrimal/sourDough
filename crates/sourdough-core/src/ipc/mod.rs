@@ -22,9 +22,9 @@ pub use client::IpcClient;
 pub use error::{IpcError, IpcErrorKind};
 pub use protocol::{
     CIRCUIT_BREAKER_OPEN, DEFAULT_IPC_TIMEOUT, DEPENDENCY_FAILURE, INTERNAL_ERROR, INVALID_PARAMS,
-    INVALID_REQUEST, JSONRPC_VERSION, JsonRpcError, JsonRpcRequest, JsonRpcResponse,
-    MESH_RELAY_TIMEOUT, METHOD_NOT_FOUND, NOT_READY, PARSE_ERROR, RATE_LIMITED,
-    SERVICE_UNAVAILABLE,
+    INVALID_REQUEST, JSONRPC_VERSION, JsonRpcError, JsonRpcErrorExt, JsonRpcRequest,
+    JsonRpcRequestExt, JsonRpcResponse, JsonRpcResponseExt, MESH_RELAY_TIMEOUT, METHOD_NOT_FOUND,
+    NOT_READY, PARSE_ERROR, RATE_LIMITED, SERVICE_UNAVAILABLE,
 };
 
 pub use crate::health::HealthProbe;
@@ -40,7 +40,7 @@ mod tests {
 
     #[test]
     fn jsonrpc_request_roundtrip() {
-        let req = JsonRpcRequest::new("health.check", serde_json::json!(1))
+        let req = JsonRpcRequest::new("health.check", None, serde_json::json!(1))
             .with_params(serde_json::json!({"deep": true}));
         let json = serde_json::to_string(&req).expect("serialize");
         let back: JsonRpcRequest = serde_json::from_str(&json).expect("deserialize");
@@ -52,7 +52,7 @@ mod tests {
 
     #[test]
     fn jsonrpc_notification_serializes_null_id() {
-        let n = JsonRpcRequest::notification("system.ping");
+        let n = JsonRpcRequest::notification("system.ping", None);
         let v = serde_json::to_value(&n).expect("to_value");
         assert!(v.get("id").is_none() || v["id"].is_null());
     }
@@ -65,17 +65,17 @@ mod tests {
         let back: JsonRpcResponse = serde_json::from_str(&json).expect("deserialize");
         assert_eq!(back.error, None);
         assert_eq!(back.result, Some(serde_json::json!({"ok": true})));
-        assert_eq!(back.id, Some(serde_json::json!("req-1")));
+        assert_eq!(back.id, serde_json::json!("req-1"));
     }
 
     #[test]
     fn jsonrpc_response_error_roundtrip() {
         let err = JsonRpcError::method_not_found("foo.bar");
-        let res = JsonRpcResponse::error(Some(serde_json::json!(42)), err);
+        let res = JsonRpcResponse::error_from(Some(serde_json::json!(42)), err);
         let json = serde_json::to_string(&res).expect("serialize");
         let back: JsonRpcResponse = serde_json::from_str(&json).expect("deserialize");
         assert!(back.result.is_none());
-        assert_eq!(back.id, Some(serde_json::json!(42)));
+        assert_eq!(back.id, serde_json::json!(42));
         let e = back.error.expect("error field");
         assert_eq!(e.code, METHOD_NOT_FOUND);
         assert!(e.message.contains("foo.bar"));
@@ -139,7 +139,7 @@ mod tests {
         let client = IpcClient::new(crate::transport::TransportEndpoint::uds(
             "/tmp/nonexistent-primal-for-timeout-test.sock",
         ));
-        let req = JsonRpcRequest::new("health.liveness", 1);
+        let req = JsonRpcRequest::new("health.liveness", None, 1);
         let result = client
             .call_with_timeout(&req, std::time::Duration::from_millis(50))
             .await;
@@ -218,7 +218,7 @@ mod tests {
 
         let ep = crate::transport::TransportEndpoint::uds(sock_path.to_str().unwrap());
         let client = IpcClient::new(ep);
-        let req = JsonRpcRequest::new("system.ping", 42);
+        let req = JsonRpcRequest::new("system.ping", None, 42);
         let resp = client.call(&req).await.unwrap();
 
         assert!(resp.error.is_none());
