@@ -289,12 +289,99 @@ data_file    = "twist.json"
 pipeline_stage = 7  # SCAN→SWEEP→SORT→FOSSILIZE→EVOLVE→TWIST
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# APPENDIX B-2: CIRCLE OF WILLIS — Relay Topology
+# APPENDIX B-2: KLEIN BOTTLE TOPOLOGY — Membrane vs Cytoplasm
+#
+# VPS = membrane (thin surface). LAN = cytoplasm (heavy compute).
+# A membrane is the THINNEST POSSIBLE SURFACE between inside and outside.
+# On a Klein bottle, there IS no inside/outside — ingress = egress.
+# The WAN/LAN boundary is non-orientable: traffic exits through golgi
+# and folds back to eastGate through the same surface.
+#
+# RULE: if a service does ROUTING, it belongs on the membrane (VPS).
+#       if a service does COMPUTE, it belongs in the cytoplasm (LAN).
+#       the membrane should never burst — keep it under 200 MB RSS.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[membrane.topology]
+pattern     = "klein-bottle"
+description = "non-orientable surface — ingress = egress, WAN/LAN fold through each other"
+
+# What STAYS on VPS (membrane surface — routing, defense, thin)
+[[membrane.topology.surface]]
+name = "caddy"
+role = "TLS termination, reverse proxy, ingress/egress"
+rss  = "~113 MB"
+why  = "it IS the surface — cannot move"
+
+[[membrane.topology.surface]]
+name = "opsonize-rs"
+role = "immune tagging, traces, discuss, gate-msg"
+rss  = "~16 MB"
+why  = "tags visitors AT the membrane — must be at the surface"
+
+[[membrane.topology.surface]]
+name = "skunkbat"
+role = "reconnaissance, automated defense"
+rss  = "~15 MB"
+why  = "defense belongs at the perimeter"
+
+[[membrane.topology.surface]]
+name = "songbird"
+role = "drawbridge, network orchestration"
+rss  = "~9 MB"
+why  = "gate control is a surface function"
+
+[[membrane.topology.surface]]
+name = "fail2ban"
+role = "jail, brute-force defense"
+rss  = "~30 MB"
+why  = "defense belongs at the perimeter"
+
+[[membrane.topology.surface]]
+name = "loamspine"
+role = "permanence ledger"
+rss  = "<1 MB"
+why  = "lightweight witness — records what the surface saw"
+
+# What moves OFF VPS (cytoplasm — heavy compute, belongs on LAN)
+[[membrane.topology.cytoplasm]]
+name   = "skunky-ingest"
+rss    = "~346 MB"
+reason = "bloom classification, entity sorting, dashboard — heavy compute"
+where  = "eastGate LAN (log shipping via rsync or WireGuard)"
+
+[[membrane.topology.cytoplasm]]
+name   = "forgejo"
+rss    = "~171 MB"
+reason = "full git forge — bare repos stay on disk, process not needed for rsync"
+where  = "eastGate LAN (or on-demand only)"
+
+[[membrane.topology.cytoplasm]]
+name   = "biomeos"
+rss    = "~26 MB"
+reason = "neural API — compute, not routing"
+where  = "eastGate LAN"
+
+[[membrane.topology.cytoplasm]]
+name   = "neutron-burst"
+rss    = "~19 MB"
+reason = "write endpoint — can proxy from LAN through Klein fold"
+where  = "eastGate LAN"
+
+# Refraction point — where the Klein bottle folds
+[membrane.topology.refraction]
+node        = "pepti"
+ip          = "157.230.209.218"
+description = "0d topological pinch — signal refracts here, bends back to source"
+analogy     = "event horizon — not broken, just where the surface inverts"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-3: CIRCLE OF WILLIS — Relay Topology
 #
 # Named after the redundant arterial circle at the base of the brain.
 # If one artery is blocked, blood still reaches every region.
-# Same pattern: if Forgejo (inner) fails → GitHub (outer) takes over.
-#               if GitHub fails → Forgejo inner path still works.
+# Inner artery: rsync over bare repo files (works even with Forgejo process OFF)
+# Outer artery: GitHub HTTPS fetch (always available)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 [membrane.relay]
@@ -303,10 +390,10 @@ description = "redundant circulatory anastomosis — no single point of failure"
 
 [[membrane.relay.arteries]]
 name    = "inner"
-path    = "eastGate → golgi(Forgejo:2222) → golgi-ext(rsync/WireGuard)"
+path    = "eastGate → golgi(rsync bare repos) → golgi-ext(WireGuard)"
 method  = "rsync"
 speed   = "fast"
-depends = "forgejo"
+depends = "filesystem"  # NOT forgejo process — just the bare repo files on disk
 
 [[membrane.relay.arteries]]
 name    = "outer"
@@ -324,6 +411,7 @@ host      = "golgi"
 domain    = "git.primals.eco"
 repo_root = "/opt/forgejo/data/repositories"
 version   = "9.0.3"
+state     = "disabled"  # process OFF — bare repos on disk suffice for rsync artery
 
 [membrane.relay.sync]
 script   = "/opt/nucleus/sync-repos.sh"
@@ -332,7 +420,7 @@ strategy = "try forgejo first, fallback to github"
 repos    = ["detroit", "wateringHole", "thesis", "signal"]
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# APPENDIX B-3: ATOMIC COMPOSITION LAYERS
+# APPENDIX B-4: ATOMIC COMPOSITION LAYERS
 #
 # Each tier is a strict superset of the previous.
 # The organism grows by adding layers, not replacing them.
