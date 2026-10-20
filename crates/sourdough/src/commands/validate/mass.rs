@@ -224,6 +224,8 @@ const WEIGHT_SORTED_SECTIONS: &[&str] = &[
 
 fn collect_pages(content_dir: &Path) -> Vec<PathBuf> {
     let mut pages = Vec::new();
+
+    // Try weight-sorted sections first (Zola structured sites).
     for section in WEIGHT_SORTED_SECTIONS {
         let section_dir = content_dir.join(section);
         if !section_dir.exists() {
@@ -231,6 +233,12 @@ fn collect_pages(content_dir: &Path) -> Vec<PathBuf> {
         }
         collect_md_recursive(&section_dir, &mut pages);
     }
+
+    // If no sections matched, fall back to flat scan (tuebor-style sites).
+    if pages.is_empty() {
+        collect_md_recursive(content_dir, &mut pages);
+    }
+
     pages
 }
 
