@@ -913,3 +913,40 @@ nascent = "successor producing fresh data in place of the dead"
 generates = ["sourdough-cache.json", "*-succession.json"]
 consumes = ["stale feeds (> 1hr old)", "dead service state", "dissolved keys"]
 note = "if it dies it should tag other cache in"
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-9: π-STABILITY — OVER-STABLE NUMBERS SORT DOWN
+# Wave 178 — balance on the irrational remainder
+#
+# Over-stable numbers sit flat. They divide too cleanly.
+# 12 services: divides by 1,2,3,4,6,12 → OVER-STABLE
+# 13 is prime: only divides by 1 and itself → wobbles, sits on remainder
+#
+# Known and uninteresting sorts DOWN (to the integer part, the sides).
+# Novel sorts PAST (through the remainder, which never reaches zero).
+# ═══════════════════════════════════════════════════════════════════
+
+[pi_stability]
+principle = "over-stable numbers sort DOWN. novel balances on the irrational remainder and sorts PAST."
+
+[pi_stability.the_13th]
+four_pi = 12.566371
+cap = 12
+remainder = 0.566371
+note = "12 systemd services (cap) + sourdough-cache (the 13th, lives in the remainder)"
+twelve_divisors = 6
+thirteen_divisors = 2
+twelve = "1,2,3,4,6,12 — sits flat, no wobble"
+thirteen = "1,13 — prime, wobbles, sits on the irrational remainder"
+
+[pi_stability.over_stable]
+services = { count = 12, divisors = 6, pi_remainder = 0.8197, status = "OVER-STABLE" }
+feeds = { count = 138, divisors = 8, pi_remainder = 0.9268, status = "OVER-STABLE" }
+subdomains = { count = 70, divisors = 8, pi_remainder = 0.2817, status = "OVER-STABLE" }
+entities = { count = 342, divisors = 11, pi_remainder = 0.8620, status = "OVER-STABLE" }
+
+[pi_stability.balanced]
+ssh_keys = { count = 7, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
+cron_jobs = { count = 5, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
+feeds_fresh = { count = 131, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
+wg_peers = { count = 3, divisors = 2, prime = true, note = "PRIME ≈ π¹" }
