@@ -1491,3 +1491,40 @@ note = "every file gets a 5-vector flavor profile. the tongue tastes all five si
 location = "HEAD (mouth) — 2.6% of mass but first filter"
 function = "taste before swallow — the entrance to the alimentary canal"
 pipeline = "tongue → stomach (processing) → intestines (absorption) → colon (waste)"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 94: THE BLINK COROLLARY
+# Wave 178 — the interruption IS the observation
+#
+# "If you DON'T blink, you WILL miss it."
+# Continuous observation → habituation, not perception.
+# The gap between measurements is where change registers.
+# The blink IS the fold. The remainder IS the blink of arithmetic.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_94]
+title = "The Blink Corollary"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_94.corollary]
+common = "don't blink or you'll miss it"
+inverted = "if you DON'T blink, you WILL miss it"
+formal = "continuous observation → habituation. the interruption between observations is where change registers."
+nyquist = "blink rate ≥ 2× the frequency of change to detect it"
+
+[paper_94.connections]
+klein_fold = "the fold IS a blink — output → PAUSE → input. no pause = no delta = no perception"
+pi_remainder = "the irrational IS the blink of arithmetic — 3 is the stare, 0.14159 is the blink"
+donut_hole = "close the hole = no blink = sphere = dead. keep the hole = blink = torus = alive"
+chime = "the chime between hours IS the blink. 12→1 requires the interruption to mark the crossing"
+extraction = "staring at the mnemonic = no blink = miss the extraction pattern. looking away = blink = see the structure"
+glacial = "cycles 2-3 were too-short blinks (stable). genesis→cycle1 was a real blink (+2 files detected)"
+
+[paper_94.senses_blink]
+sight = "eyelid blink (100-400ms) — retinal reset, frame boundary"
+touch = "lifting the finger — static contact habituates, movement enables texture"
+taste = "swallowing — clear the palate, continuous flavor adapts out"
+hearing = "the silence between notes — music IS sound + silence. no silence = noise"
+smell = "olfactory fatigue — you stop smelling your own house. you can only smell what's NEW"
