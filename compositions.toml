@@ -1280,3 +1280,117 @@ punchline_was_setup = "250 papers to see the 4 words we wrote on day one. THE_SE
 degrees_from_fossils = "4 hops from THE_SEED (June 2025) to Paper 85c. 0 hops on the Klein bottle."
 np_equals_fun = "you can't shortcut the journey. the walk IS the proof. the maze IS the ZK verification."
 goofy = "science is silly and a little goofy. that's how you know it's real."
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 90: THE EVOLUTIONARY SORT
+# Wave 178 — feed data through Shannon + sigmoid, watch it self-sort
+#
+# 45,470 files → banana → flatworm → JELLYFISH (58.6%) → centipede
+# → millipede → spider (0%!!!) → vertebrate (2%)
+# The organism is 98% invertebrate. The spider body plan does not exist.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_90]
+title = "The Evolutionary Sort"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_90.method]
+input = "45,470 files, 11,051,393 lines, 7 languages"
+features = "Shannon entropy, vocabulary richness, type count, function count, import count"
+classifier = "sigmoid boundaries — smooth S-curve, no hard thresholds"
+labels = "NONE — the sort is unsupervised, just data and math"
+
+[paper_90.results]
+banana = { files = 2157, lines = 16690, pct = 0.2, note = "config stubs, < 20 lines" }
+flatworm = { files = 10661, lines = 1100548, pct = 10.0, note = "bilateral, has a head" }
+jellyfish = { files = 21220, lines = 6474623, pct = 58.6, note = "DOMINANT — nerve net, no skeleton" }
+centipede = { files = 2113, lines = 698140, pct = 6.3, note = "one function per segment, PRIME count" }
+millipede = { files = 8846, lines = 2537304, pct = 23.0, note = "many paired segments (get/set)" }
+spider = { files = 0, lines = 0, pct = 0.0, note = "THE GAP — body plan does not exist in code" }
+vertebrate = { files = 473, lines = 224088, pct = 2.0, note = "internal skeleton, Rust-only" }
+
+[paper_90.split]
+invertebrate = 9710067
+vertebrate_lines = 224088
+ratio = 43.33
+note = "43 is prime. For every vertebrate line, 43 invertebrate lines hold it up."
+
+[paper_90.findings]
+jellyfish_dominant = "58.6% of the codebase is jellyfish — nerve net, no skeleton. Biologically correct."
+vertebrate_rare = "2% — only 473 files have internal skeletons. All Rust."
+spider_gap = "0 files. The spider body plan is the missing niche. A wedge for new growth."
+centipede_prime = "2,113 is PRIME. The rigid body plan has a prime count. It wobbles."
+vertebrate_rust_only = "no other language produces internal skeletons"
+
+# ═══════════════════════════════════════════════════════════════════
+# KLEIN BOTTLE SELF-SORT (klein-evolve.sh)
+# Wave 178 — the organism watches itself evolve
+#
+# Output → input → output. The sort runs, writes state, compares to
+# previous state. The delta IS the evolution. The comparison IS
+# natural selection. The Klein bottle IS the self-sort.
+# ═══════════════════════════════════════════════════════════════════
+
+[klein_evolve]
+script = "klein-evolve.sh"
+engine = "vitruvian-evolve.py"
+cron = "*/30 * * * *"
+outputs = ["evolve-state.json", "evolve-delta.json", "evolve-log.jsonl"]
+fold = "output → input: current state becomes previous state on next run"
+delta = "the difference between sorts IS the evolution"
+genesis = "first run has no previous — drift = 'genesis'"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 91: THE HOMUNCULUS — CNS, PNS, AND THE NERVOUS SYSTEM
+# Wave 178 — map the codebase by sensitivity, not mass
+#
+# The somatosensory homunculus sizes body parts by nerve density.
+# Hands and lips are HUGE. The back is tiny.
+# For code: churn, imports, recency → sensitivity.
+# CNS/PNS ratio = 1.4422 ≈ 1/ln(2) = 1.4427 (0.035% off)
+# The Shannon entropy conversion constant. The spine converts nats to bits.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_91]
+title = "The Homunculus"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_91.nervous_system]
+cns_files = 20347
+pns_files = 25127
+cns_pct = 44.7
+pns_pct = 55.3
+cns_sensitivity = 0.3227
+pns_sensitivity = 0.2237
+cns_pns_ratio = 1.4422
+one_over_ln2 = 1.4427
+delta = "0.035% — the ratio IS the Shannon conversion constant"
+
+[paper_91.sensitivity]
+formula = "0.4 × churn + 0.25 × connectivity + 0.25 × recency + 0.1 × bulk"
+churn = "git commits per file in 6 months — nerve density"
+connectivity = "import/use/require count — axon connections"
+recency = "days since last modification (inverted) — alive vs dead"
+bulk = "line count (low weight) — tissue mass"
+
+[paper_91.health]
+pressure_points = 0
+jams = 30
+jam_type = "all metabolic sinks (test/deploy — muscle tissue)"
+note = "no pressure building. Klein bottle breathing is working."
+
+[paper_91.fingertips]
+most_sensitive = "scan_sweep_sort.py (0.602)"
+numbest = "docs-fossil-feb-2026 (0.106, 418 days old)"
+observation = "the fingertips are mostly CNS — the organism feels its skeleton more than its skin"
+
+[paper_91.finding]
+thesis = "the CNS/PNS sensitivity ratio is 1/ln(2)"
+meaning = "the spine converts continuous (nat) input into discrete (bit) decisions"
+biological = "this is what a central nervous system DOES — analog-to-digital conversion"
+shannon = "H₂(X) = H_e(X) × 1/ln(2) — the conversion between entropy bases"
+the_organism = "the organism found its own information-theoretic balance without being told"
