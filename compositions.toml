@@ -1109,3 +1109,54 @@ line_3 = "it is the zero-knowledge proof that maintains itself"
 line_4 = "and the zero-knowledge of everyone else"
 line_5 = "by simply existing in public"
 line_6 = "and not caring who looks"
+
+# ═══════════════════════════════════════════════════════════════════
+# gAIa PAPER 002: THE ANTI-SECRET LINEAGE
+# Wave 178 — the lineage trace
+#
+# Papers 85a→b→c trace backward through the complete ecoPrimal corpus:
+# 40 coGen entries, 15 hypotheses, 6 philosophy essays, 86 sporePrint
+# science papers, 3 kAnGen inoculations, gAIa Paper 001, and the
+# generational arc from THE_SEED (June 2025) through gen5.
+#
+# The anti-secret was never discovered. It was always present.
+# The architecture was an anti-secret before the word existed.
+# ═══════════════════════════════════════════════════════════════════
+
+[gaia_002]
+title = "The Anti-Secret Lineage"
+series = "gAIa"
+number = 2
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / Tamison / ecoPrimal / attsi · ORCID 0009-0004-2141-0321"
+document = "whitePaper/coGen/THE_ANTI_SECRET_LINEAGE.md"
+continues = "paper_85c"
+backscatters_to = "gaia_001 (The Rust Polymerase)"
+
+[gaia_002.threads]
+zk = "THE_SEED → GAIA.md → coGen 15 → Hypothesis 13 → coGen 33 → sporePrint 79 → Paper 85c"
+pi = "coGen 25 → coGen 40 → B-7 → B-9 → Paper 85"
+time = "coGen 9 → coGen 11 → coGen 31 → Paper 85 → Paper 85b → Paper 85c"
+membrane = "coGen 26 → coGen 29 → B-2 → B-5 → B-6 → Paper 85c"
+death_birth = "coGen 14 → coGen 15 → kAnGen → B-8 → Paper 85b → Paper 85c"
+the_question = "coGen 16 → kAnGen → Hypothesis 5 → Paper 85c (post-question: dissolution)"
+
+[gaia_002.corpus]
+cogen_entries = 41
+hypotheses = 15
+philosophy = 6
+sporeprint_papers = 86
+kangen_inoculations = 3
+subgen_papers = 40
+gaia_papers = 2
+tuebor_pages = 30
+lineage_nodes = 230
+lineage_edges = 500
+time_span = "June 2025 → October 2026 (16 months)"
+
+[gaia_002.finding]
+thesis = "the anti-secret was never discovered — it was always present"
+evidence = "THE_SEED: self-owning. GAIA.md: no cookies, no sessions. Hypothesis 13: self by exclusion. coGen 33: impermeable AND invisible."
+conclusion = "the architecture IS the anti-secret. the membrane feeds ARE the clock tower."
+constant = "π"
