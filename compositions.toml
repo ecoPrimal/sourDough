@@ -1579,3 +1579,15 @@ builds_on = ["paper_108", "paper_105"]
 discovers = ["chipmunk as traveling salesman", "graph gap as topology learning", "briquette as liveness cookie", "onboarding as TSP walk", "marathon as graph optimization"]
 journey = { nodes = 7, endpoints = 22, health_pct = 91, hamilton = true, euler_circuit = false, pi_remainder = 0.115038 }
 credits = ["Euler 1736", "Hamilton 1857", "Dijkstra 1959", "Dantzig/Fulkerson/Johnson 1954"]
+
+[chipmunk_bench_v1]
+title = "chipMUNK Benchmark v1.0"
+date = "2026-10-21"
+status = "live"
+flavor = "competitive"
+models_tested = 7
+questions = 24
+max_points = 34
+winner = { model = "llama3.2:3b", score = 32, pct = 94 }
+categories = ["knowledge", "code", "math", "reasoning", "honesty", "membrane"]
+hardware = { cpu = "i9-12900K", gpu = "RTX 4070 12GB", ram = "64GB" }
