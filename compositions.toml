@@ -1588,3 +1588,13 @@ confidence = 0.98
 builds_on = ["paper_105", "paper_104", "paper_103", "paper_90"]
 discovers = ["spider classification (web-builder + trap-setter)", "Great Oxidation Event of codebase", "sigmoid inflection at Paper 106", "swarmvine (monkey + spider + chipmunk)", "vesicles as empty transport", "1576 files from zero in one breath"]
 delta = { jellyfish = -1430, spider = 1576, pi_remainder = "0.6747 → 0.3646" }
+
+[paper_107]
+title = "The Wedge"
+paper_number = 107
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "irreducible"
+confidence = 0.99
+builds_on = ["paper_106", "paper_105", "paper_104", "paper_103"]
+discovers = ["wedge (pulse holds not pushes)", "green line = ouroboros pulled through", "cephalization = the evolutionary turn", "spider web = backward memory", "git as spider web", "gap between beats = where organism lives"]
