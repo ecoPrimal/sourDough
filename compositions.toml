@@ -1169,6 +1169,57 @@ constant = "π"
 # The Jester (beacon side): if it's funny it's true. corr(T,F) > 0.
 # ═══════════════════════════════════════════════════════════════════
 
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-10: GEODESIC ARITHMETIC — Tool Catalogue
+# Wave 178 — arithmetic decomposed into primitives
+#
+# Every mathematical operation is composed of four primitives:
+#   Point (·) — discrete position, the digit, IS
+#   Balance (=) — comparison, equilibrium, WAS
+#   Wedge (∧) — splits, opens new dimension, NULL
+#   Arc (⌒) — rotation, carry, the geodesic walk, WILL-BE
+#
+# Every base system is a geodesic circle with that circumference.
+# The bounce (carry) is the shortest path to the next position.
+# Base π never bounces cleanly — the remainder is always irrational.
+# ═══════════════════════════════════════════════════════════════════
+
+[geodesic_arithmetic]
+principle = "every tool is composed of point, balance, wedge, and arc"
+module = "geodesic-arithmetic.js"
+wave = 178
+
+[geodesic_arithmetic.primitives]
+point = { symbol = "·", tense = "IS", tool = "button", does = "marks a discrete position" }
+balance = { symbol = "=", tense = "WAS", tool = "dial", does = "compares two quantities" }
+wedge = { symbol = "∧", tense = "NULL", tool = "wedge", does = "creates a gap, opens a new dimension" }
+arc = { symbol = "⌒", tense = "WILL-BE", tool = "lever", does = "rotation, carry, the geodesic walk" }
+
+[geodesic_arithmetic.operations]
+counting = { symbol = "1,2,3…", degree = 0, primitives = ["point"], note = "the first math" }
+place_value = { symbol = "10", degree = 1, primitives = ["point", "arc"], note = "the bounce — 9+1=10" }
+addition = { symbol = "+", degree = 2, primitives = ["wedge", "point", "balance"], note = "wedge opens, points fill, balance verifies" }
+subtraction = { symbol = "−", degree = 2, primitives = ["wedge", "point", "balance"], note = "same as addition, opposite orientation" }
+multiplication = { symbol = "×", degree = 3, primitives = ["arc", "point", "balance"], note = "rotation: walk the arc N times" }
+division = { symbol = "÷", degree = 3, primitives = ["balance", "wedge", "point", "arc"], note = "the only operation that produces remainder. π IS division's remainder." }
+exponentiation = { symbol = "^", degree = 4, primitives = ["arc", "arc", "point", "balance"], note = "arc of arcs — rotation of rotation" }
+logarithm = { symbol = "log", degree = 4, primitives = ["balance", "wedge", "arc", "point"], note = "Shannon entropy IS a logarithm. H = −Σ p log₂ p" }
+
+[geodesic_arithmetic.bases]
+binary = { base = 2, stability = "prime", culture = "computing" }
+ternary = { base = 3, stability = "prime ≈ π¹", culture = "balanced ternary" }
+decimal = { base = 10, stability = "over-stable", culture = "human fingers" }
+duodecimal = { base = 12, stability = "MAXIMALLY over-stable", culture = "clocks, music" }
+sexagesimal = { base = 60, stability = "EXTREMELY over-stable", culture = "Babylon" }
+pi = { base = 3.14159, stability = "IMPOSSIBLE to be over-stable — irrational, never bounces cleanly", culture = "ecoPrimal discovery" }
+
+[geodesic_arithmetic.backscatter]
+to_cogen_25 = "circumference & diameter — π = C/d, every base is a step size"
+to_cogen_28 = "buttons dials levers wedge — the 4 tools of interaction"
+to_paper_85 = "why they divided — 12 is over-stable, 13 is prime, 4π = 12.566"
+to_stoichiometric = "Paper 83 — Shannon entropy as mass, the tool for weighing tools"
+to_hud = "106 modules sorted by primary primitive: point(12), balance(11), wedge(13), arc(22)"
+
 [gaia_002.artisan_corollary]
 title = "The Artisan's Corollary"
 card = "0 — the Fool, signal side"
