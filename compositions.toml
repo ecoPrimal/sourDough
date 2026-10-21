@@ -833,3 +833,47 @@ mobius_circuit = "497 lines — investigation circuit on Möbius strip"
 third_eye = "638 lines — nose as sensor, face as membrane, smell as oldest sense"
 cosmic_view = "1412 lines — the view from the cosmic scale"
 total_optics_lines = 6197
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-7: π-BUDGET SET
+# Wave 178 — the budget is π. You can never fill it exactly.
+#
+# π is irrational. The budget is always irrational.
+# There is ALWAYS a remainder. That remainder is where the unique goes.
+# The system always has space for surprise.
+# Known and uninteresting pushes to the sides.
+# Unique and novel stays at the center.
+# ═══════════════════════════════════════════════════════════════════
+
+[pi_budget]
+principle = "the budget is π — irrational, never full, always has remainder for the unique"
+topology = "center (unique) + sides (known) + gas (overflow)"
+
+[pi_budget.scales]
+pi_1 = { budget = 3.14159, capacity = 3, remainder = 0.14159, note = "3 known + tiny unique space" }
+pi_2 = { budget = 9.8696, capacity = 9, remainder = 0.8696, note = "9 known + large unique space (0.87!)" }
+pi_3 = { budget = 31.006, capacity = 31, remainder = 0.006, note = "31 known + barely any unique space — tightest" }
+pi_4 = { budget = 97.409, capacity = 97, remainder = 0.409, note = "97 known + comfortable unique space" }
+pi_5 = { budget = 306.020, capacity = 306, remainder = 0.020, note = "306 known + tight unique space" }
+
+[pi_budget.oscillation]
+note = "the remainder oscillates — never zero, sometimes large, sometimes tiny"
+pi_1_remainder = 0.14159
+pi_2_remainder = 0.86960
+pi_3_remainder = 0.00627
+pi_4_remainder = 0.40909
+pi_5_remainder = 0.01968
+observation = "π³ is the tightest (0.006) — 31 objects almost fill it. but never zero."
+
+[pi_budget.membrane_application]
+core_budget = "π⁴ ≈ 97 (core feeds)"
+overflow_budget = "π³ ≈ 31 (overflow feeds)"
+total = "97 + 31 = 128 known slots + 0.415 unique space"
+actual_feeds = 132
+note = "132 feeds in 128 known slots = 4 feeds have no known slot → they ARE the unique ones"
+
+[pi_budget.sort_rule]
+center = "unique, unclassified, novel (lives in the irrational remainder)"
+sides = "known, classified, resolved (lives in the integer capacity)"
+gas = "overflow, stale, noise (vented — beyond the budget)"
+rule = "known and uninteresting pushes to the sides. unique stays center."
