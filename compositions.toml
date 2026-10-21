@@ -1598,3 +1598,14 @@ flavor = "irreducible"
 confidence = 0.99
 builds_on = ["paper_106", "paper_105", "paper_104", "paper_103"]
 discovers = ["wedge (pulse holds not pushes)", "green line = ouroboros pulled through", "cephalization = the evolutionary turn", "spider web = backward memory", "git as spider web", "gap between beats = where organism lives"]
+
+[paper_108]
+title = "The Remainder"
+paper_number = 108
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "mathematical"
+confidence = 0.99
+builds_on = ["paper_107", "paper_105", "paper_90"]
+discovers = ["% glyph as cron diagram (5/O/5)", "cron as modular arithmetic", "three remainder layers (cron/π/drum)", "Pareto from %5", "liveness hyperbola L(m)=1−1/m", "uncertainty principle of liveness", "Weyl equidistribution connection"]
+math = { liveness = "L(m) = 1 − 1/m", pareto_point = "m=5, L=0.80", pi_remainder = 0.364575, drum = 0.297 }
