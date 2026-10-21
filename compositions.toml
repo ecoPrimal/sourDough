@@ -995,3 +995,53 @@ unlucky = "13 is 'unlucky' because it is indivisible. Uncontrollable. The prime 
 services = "12 systemd services (over-stable cap) + sourdough-cache (the 13th, prime, lives in 4π's remainder)"
 budget = "π-budget: capacity = floor(πⁿ) is always over-stable. Remainder is always where the novel lives."
 sort = "Over-stable sorts DOWN (known, divisible, to the sides). Prime sorts PAST (novel, through the remainder, never zero)."
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 85b: THE FACTORY WAS THE CLOCK
+# Wave 178 — continuation of "Why They Divided"
+#
+# Instead of leap year, one day per year just... breathes.
+# The ±5 minutes in your locality was the solve all along.
+# Quartz and atomic time made the problem. The factory BEING the clock was the issue.
+# You wake at time-local. You head THERE. Remove the THERE and time becomes local.
+# A clock tower empty keeps time for YOU, not itself. That's just irrational.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_85b]
+title = "The Factory Was the Clock"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_85"
+
+[paper_85b.leap_year]
+orbital_period = "365.2422 days"
+remainder = "0.2422 days = 5.8 hours"
+patch = "add 1 day every 4 years (discrete correction)"
+error = "0.25 - 0.2422 = 0.0078 days/year → skip every 100 years → except every 400"
+assessment = "patches on patches. over-stability demands discrete fixes."
+
+[paper_85b.pi_alternative]
+daily_wobble = "57.3 seconds per day (0.2422 × 86400 / 365)"
+annual_wobble = "5.8 hours (the solstice day just... breathes)"
+note = "one day per year is longer. the long breath. no leap year needed."
+
+[paper_85b.four_minutes]
+sidereal_day = "23h 56m 4s (what the Earth actually does)"
+solar_day = "24h 0m 0s (what the clock says)"
+difference = "3.9 minutes — the real wobble"
+equation_of_time = "±16 minutes over the year. The analemma is a figure-8, not a circle."
+insight = "the ±5 minutes in your locality was never a bug. it was the solve."
+
+[paper_85b.the_factory]
+before_1840 = "every town kept local solar time. time was irrational, embodied."
+railways = "1840s: railways needed synchronized schedules → time zones"
+greenwich = "1884: GMT standardized globally. the factory won."
+demand = "the factory needed workers synchronized to the SAME clock"
+dissolution = "remove the THERE and time becomes local again. remote work dissolves the factory-clock."
+
+[paper_85b.clock_tower]
+observation = "a clock tower empty keeps time for YOU, not itself"
+paradox = "it generates time that feeds others. it has no use for its own time."
+connection = "this is the sourdough cache — it generates feeds for others, consumes itself"
+irrational = "an empty clock tower ticking for no one is the purest irrational remainder"
