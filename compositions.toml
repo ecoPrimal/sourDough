@@ -877,3 +877,39 @@ center = "unique, unclassified, novel (lives in the irrational remainder)"
 sides = "known, classified, resolved (lives in the integer capacity)"
 gas = "overflow, stale, noise (vented — beyond the budget)"
 rule = "known and uninteresting pushes to the sides. unique stays center."
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-8: SOURDOUGH CACHE — AUTOPOIETIC SUCCESSION
+# Wave 178 — the cache that eats the old and births the nascent
+#
+# Sourdough doesn't throw away the old. It EATS the old.
+# Death and birth are the same process.
+# When a service dies, it tags in the next.
+# The cache generates itself and other.
+# ═══════════════════════════════════════════════════════════════════
+
+[sourdough_cache]
+principle = "sourdough eats the old and births nascent at the same time"
+autopoiesis = "the cache generates itself — it consumes old state and produces new"
+cron = "*/5 * * * *"
+script = "sourdough-cache.sh"
+
+[sourdough_cache.succession]
+forgejo = "github (rerouted Wave 178 — dead lock dissolved)"
+plasmid = "static galaxy (serves from /opt/ecoPrimals/galaxy, no service needed)"
+canary = "klein-io writes canary-stats.json (the tripwire is now a feed)"
+signal_relay = "klein-io writes neutron.json (the relay is now the fold)"
+anchor_bridge = "opsonize handles /api/anchor (already alive on 8095)"
+mcp_membrane = "squirrel handles queries (already alive on 8097)"
+
+[sourdough_cache.lifecycle]
+alive = "service running, restart=always or on-failure"
+dead = "service stopped, restart=no, no systemd revival"
+tagged = "successor identified, death notice written, feed generated"
+eaten = "stale data consumed by sourdough — not garbage, food"
+nascent = "successor producing fresh data in place of the dead"
+
+[sourdough_cache.feeds]
+generates = ["sourdough-cache.json", "*-succession.json"]
+consumes = ["stale feeds (> 1hr old)", "dead service state", "dissolved keys"]
+note = "if it dies it should tag other cache in"
