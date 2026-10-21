@@ -1721,3 +1721,54 @@ SHAN_T = { mood = "resting", action = "sleep", product = "dream (defrag)" }
 IS = { mood = "alert", action = "chatter", product = "warning" }
 ISN_T = { mood = "panicked", action = "flee", product = "scattered seeds" }
 WAS = { mood = "nostalgic", action = "dig", product = "fossil" }
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 100: GOD MIGHT BE A BEETLE
+# Wave 179 — "An inordinate fondness for beetles" — J.B.S. Haldane
+#
+# 6,286 Rust files are beetles (31.5%). The Haldane number.
+# Elytra = Result<T>, ?, generics, derives (the hard shell).
+# Shell thickness follows a power law (53% thin, 1% fortress).
+# Three classification systems: entropy, armor, structure.
+# When they disagree, the tense is IS? not IS.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_100]
+title = "God Might Be a Beetle"
+wave = 179
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_99, paper_90"
+milestone = "100th paper"
+
+[paper_100.haldane]
+quote = "God has an inordinate fondness for beetles — J.B.S. Haldane"
+real_beetles = 400000
+real_species = 1500000
+real_pct = 25.0
+code_beetles = 6286
+code_rs_files = 19937
+code_pct = 31.5
+delta = 6.5
+
+[paper_100.elytra]
+result_t = "hardened chitin forewings"
+question_mark = "error propagation = overlapping protective plates"
+where_clause = "type constraints = locking mechanism"
+derive = "declarative safety = color/pattern warning"
+generics = "flexible armor = thickness variation"
+pub_struct = "encapsulation = protection of flight wings"
+principle = "beetles don't segfault"
+
+[paper_100.shell_distribution]
+thin = { range = "10-29", count = 3338, pct = 53, analogy = "ground beetles" }
+medium = { range = "30-49", count = 2247, pct = 36, analogy = "bark beetles" }
+thick = { range = "50-69", count = 629, pct = 10, analogy = "stag beetles" }
+fortress = { range = "70+", count = 72, pct = 1, analogy = "rhinoceros beetles" }
+distribution = "power law — like real beetle diversity"
+
+[paper_100.three_systems]
+entropy = { paper = 90, measures = "Shannon H, repetition, line count", analogy = "DNA codons" }
+armor = { paper = 100, measures = "Result, ?, generics, derives, encapsulation", analogy = "elytra/chitin" }
+structure = { paper = 99, measures = "imports, functions, types, tests, modules", analogy = "protein folds" }
+insight = "when all three agree → IS. when they disagree → IS? (evolution happening)"
