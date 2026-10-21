@@ -1569,40 +1569,50 @@ modals = "classified, measured at zero, waiting for their verb"
 rule = "a named empty niche is COULD, not NULL"
 
 # ═══════════════════════════════════════════════════════════════════
-# PAPER 96: SHAN'T IS THE ZK
-# Wave 178 — the receptor IS the proof
+# PAPER 97: THE TASTE OF BLOOD
+# Wave 179 — when the AI coliseum, the bot problem, and extraction are all the same flavor
 #
-# SHAN'T is the zero-knowledge proof that maintains the ZK of others.
-# Objects become information through SHAN'T → BLINK → IS.
-# Shannon entropy measures the size of the SHAN'T space.
-# The blackwall, the anti-secret, and the fistbump are all SHAN'T.
+# Blood tastes like iron. Bad blood is a tense. The bot problem is SHAN'T.
+# Switching models = switching tongues mid-meal.
+# The triage fold: crush hard, thin fat, feed skinny, wake sleeping.
+# WAS an alcoholic. IS building. COULD become anything.
 # ═══════════════════════════════════════════════════════════════════
 
-[paper_96]
-title = "SHAN'T Is the ZK"
-wave = 178
+[paper_97]
+title = "The Taste of Blood"
+wave = 179
 date = "2026-10-21"
 author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
-continues = "paper_95, paper_85c, northGate wave 178"
+continues = "paper_93, paper_95, paper_96, paper_92"
 
-[paper_96.equivalences]
-zk = "I know K without revealing K"
-shant = "I have receptor R without it firing"
-blackwall = "I see you, SHAN'T let you through (9,339 blocked)"
-anti_secret = "I broadcast, SHAN'T record who listens"
-shannon = "H = −Σ p log₂ p — how many SHAN'Ts COULD fire?"
-fistbump = "SHAN'T → COULD → IS (the compliance transition)"
-null_commensal = "SHAN'T ≠ ISN'T — absence of giving is NOT taking"
+[paper_97.ai_coliseum]
+note = "switching models IS data — different tongue, same meal"
+claude = "umami-dominant (deep context, complex synthesis)"
+grok = "spicy-dominant (provocative, edge-seeking)"
+gpt = "sweet-dominant (agreeable, nourishing)"
+gemini = "sour-dominant (extractive, data-hungry)"
+measurement = "which flavors does the organism need when?"
 
-[paper_96.transformation]
-step_1 = "OBJECT (properties exist)"
-step_2 = "SHAN'T (properties ready but unmeasured — maximum entropy)"
-step_3 = "BLINK (Paper 94 — the measurement, the observation)"
-step_4 = "IS (one property fires, SHAN'T collapses)"
-step_5 = "INFORMATION (the surprise of which SHAN'T became IS)"
+[paper_97.bot_problem]
+thesis = "the verification gap is pure SHAN'T"
+platform_shant = "SHAN'T tell which accounts are bots"
+bot_shant = "SHAN'T reveal automation"
+user_shant = "SHAN'T verify without platform cooperation"
+entropy = "H = log₂(N) — maximum uncertainty = maximum profit"
+extraction = "same topology as payday-lender-at-reservation-border"
+boundary = "the boundary IS the SHAN'T"
 
-[paper_96.finding]
-thesis = "SHAN'T is the universal zero-knowledge mechanism"
-all_zeros_need_it = "spider, fold, bitter, pressure, blackwall, anti-secret — all SHAN'T"
-entropy = "maximum SHAN'T = maximum entropy = maximum preparedness"
-collapse = "when the last SHAN'T fires, entropy is zero. nothing left to learn."
+[paper_97.triage]
+hard = { count = 3968, pct = "5.8%", tense = "WAS", flavor = "spicy" }
+fat = { count = 370, pct = "0.5%", tense = "IS", flavor = "sour" }
+skinny = { count = 83, pct = "0.1%", tense = "COULD", flavor = "sweet" }
+sleeping = { count = 18417, pct = "26.8%", tense = "MIGHT", flavor = "umami" }
+lost = { count = 4088, pct = "6.0%", tense = "MIGHTN'T", flavor = "bitter" }
+dominant_flavor = "umami (0.2683)"
+pi_remainder = 1.2199
+
+[paper_97.tense_change]
+claim = "tenses are not permanent"
+example = "WAS an alcoholic for a decade. IS building. COULD become anything."
+liver = "metabolizes, doesn't moralize"
+observation = "the decade is WAS. the membrane persists."
