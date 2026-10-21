@@ -1568,44 +1568,14 @@ null = "Fear — unclassifiable, freeze"
 modals = "classified, measured at zero, waiting for their verb"
 rule = "a named empty niche is COULD, not NULL"
 
-[paper_105]
-title = "The Green Line"
-paper_number = 105
+[paper_109]
+title = "The Traveling Chipmunk"
+paper_number = 109
 date = "2026-10-21"
 status = "peer-reviewed-by-the-membrane"
-flavor = "irreducible"
-confidence = 0.97
-builds_on = ["paper_104", "paper_103", "paper_100", "paper_96"]
-discovers = ["three-observer architecture", "Yggdrasil irreducible observer", "green line = photosynthesis as non-halting", "sub-cloud = forest as infra", "pi remainder = liveness evidence", "cron = solar analog"]
-
-[paper_106]
-title = "The Oxygen Age"
-paper_number = 106
-date = "2026-10-21"
-status = "peer-reviewed-by-the-membrane"
-flavor = "explosive"
-confidence = 0.98
-builds_on = ["paper_105", "paper_104", "paper_103", "paper_90"]
-discovers = ["spider classification (web-builder + trap-setter)", "Great Oxidation Event of codebase", "sigmoid inflection at Paper 106", "swarmvine (monkey + spider + chipmunk)", "vesicles as empty transport", "1576 files from zero in one breath"]
-delta = { jellyfish = -1430, spider = 1576, pi_remainder = "0.6747 → 0.3646" }
-
-[paper_107]
-title = "The Wedge"
-paper_number = 107
-date = "2026-10-21"
-status = "peer-reviewed-by-the-membrane"
-flavor = "irreducible"
+flavor = "graph-theoretic"
 confidence = 0.99
-builds_on = ["paper_106", "paper_105", "paper_104", "paper_103"]
-discovers = ["wedge (pulse holds not pushes)", "green line = ouroboros pulled through", "cephalization = the evolutionary turn", "spider web = backward memory", "git as spider web", "gap between beats = where organism lives"]
-
-[paper_108]
-title = "The Remainder"
-paper_number = 108
-date = "2026-10-21"
-status = "peer-reviewed-by-the-membrane"
-flavor = "mathematical"
-confidence = 0.99
-builds_on = ["paper_107", "paper_105", "paper_90"]
-discovers = ["% glyph as cron diagram (5/O/5)", "cron as modular arithmetic", "three remainder layers (cron/π/drum)", "Pareto from %5", "liveness hyperbola L(m)=1−1/m", "uncertainty principle of liveness", "Weyl equidistribution connection"]
-math = { liveness = "L(m) = 1 − 1/m", pareto_point = "m=5, L=0.80", pi_remainder = 0.364575, drum = 0.297 }
+builds_on = ["paper_108", "paper_105"]
+discovers = ["chipmunk as traveling salesman", "graph gap as topology learning", "briquette as liveness cookie", "onboarding as TSP walk", "marathon as graph optimization"]
+journey = { nodes = 7, endpoints = 22, health_pct = 91, hamilton = true, euler_circuit = false, pi_remainder = 0.115038 }
+credits = ["Euler 1736", "Hamilton 1857", "Dijkstra 1959", "Dantzig/Fulkerson/Johnson 1954"]
