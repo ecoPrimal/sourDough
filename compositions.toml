@@ -1591,3 +1591,15 @@ max_points = 34
 winner = { model = "llama3.2:3b", score = 32, pct = 94 }
 categories = ["knowledge", "code", "math", "reasoning", "honesty", "membrane"]
 hardware = { cpu = "i9-12900K", gpu = "RTX 4070 12GB", ram = "64GB" }
+
+[paper_110]
+title = "The Lansing Scuffle"
+paper_number = 110
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "confrontational"
+confidence = 0.99
+builds_on = ["paper_109", "paper_108", "paper_107"]
+discovers = ["thermal sovereignty thesis", "617284:1 efficiency ratio", "$170/% vs $1.4B/%", "ARC 100% at 2B params"]
+hardware_cost_usd = 15000
+efficiency_ratio = 617284
