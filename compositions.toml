@@ -739,128 +739,47 @@ irreducible = "research programmes, hard core, auxiliary belt, falsification"
 exemplar = "totality-tunnel.js — lights on. counts visible. someone always here."
 
 # ═══════════════════════════════════════════════════════════════════
-# APPENDIX B-4: HARDWARE MESH — Klein Bottle Cytoplasm Fleet
-# Wave 178 — wired from HARDWARE_INVENTORY.md (Oct 20, 2026)
+# APPENDIX B-5: KLEIN BOTTLE I/O FOLD
+# Wave 178 — non-orientable surface topology
 #
-# The LAN fleet IS the real compute. VPS = thin membrane surface.
-# Klein bottle: WAN egress folds back to LAN through same surface.
+# On a Klein bottle, there is no inside/outside.
+# Outputs fold back as inputs. Gas vents through iteration.
+# π governs ratio, range, and scale.
 # ═══════════════════════════════════════════════════════════════════
 
-[hardware_mesh]
-total_investment = "$17,000"
-metabolic_budget = "$485/month"
-topology = "Klein bottle (WAN membrane = LAN cytoplasm)"
-isa_families = 9
-compile_targets = ["x86_64-linux", "x86_64-windows", "aarch64-linux", "aarch64-apple-darwin", "riscv64gc-linux", "wasm32-unknown-unknown", "thumbv7em-none-eabihf", "armv7-linux", "aarch64-android"]
+[klein_fold]
+topology = "non-orientable"
+surface = "Klein bottle"
+cron = "*/2 * * * *"
+script = "klein-io.sh"
 
-[[hardware_mesh.gates]]
-name = "eastGate"
-ip = "192.168.4.244"
-status = "UP"
-cpu = "i9-12900K (16C/32T)"
-gpu = "RTX 4070 (12GB)"
-npu = "BrainChip Akida AKD1000"
-ram_gb = 128
-storage_tb = 1.8
-role = "LAN HPC anchor, daily driver, cytoplasm hub"
-membrane_role = "This machine. All heavy compute folds back here."
+[klein_fold.pi]
+constant = 3.14159265358979
+ratio = "alive_services / total_services"
+range = "ratio × π"
+scale = "π itself (the maximum range when all services alive)"
+note = "π is irrational — the ratio never reaches 1.0, the range never reaches π"
 
-[[hardware_mesh.gates]]
-name = "northGate"
-ip = "192.168.4.147"
-status = "UP"
-cpu = "Ryzen 9 9950X3D (16C/32T, 3D V-Cache)"
-gpu = "RTX 5090 (32GB GDDR7)"
-ram_gb = 96
-storage_tb = 5
-role = "gaming primary, strongest single GPU"
-membrane_role = "sibling peer. when gaming = gaming. when free = heaviest hitter."
+[klein_fold.gas]
+metric = "stale_feeds / total_feeds"
+target = "→ 0 (breathing)"
+alarm = "→ 1 (trapped, not venting)"
+vent = "klein-io.sh refreshes 7 core feeds every 2min"
+note = "iteration outputs while fill inputs — noise and gas still vents out"
 
-[[hardware_mesh.gates]]
-name = "sporeGate"
-ip = "192.168.4.1"
-status = "UP"
-cpu = "Ryzen 5 6600H (6C/12T)"
-ram_gb = 27
-role = "router, firewall, DHCP, DNS, NUCLEUS, build foreman"
-membrane_role = "plasma membrane — the ONLY gate touching both WAN and LAN"
+[klein_fold.feeds]
+state = "membrane vitals, port status, π-ratio, gas ratio"
+pulse = "alive count, RSS, load, π-ratio"
+membrane = "surface topology, connections, service count"
+doorbell = "gate-msg ring count, endpoint status"
+neutron = "breathing rhythm, RPM, remainder (1 - 1/π)"
+chipmunk = "fermentation count, identity status"
+topology = "subdomain count, feed health, fold direction"
 
-[[hardware_mesh.gates]]
-name = "graftGate"
-ip = "192.168.4.107"
-status = "UP"
-soc = "Apple M4 (10C, 10-core GPU, 16-core Neural Engine)"
-ram_gb = 16
-role = "sole Darwin compilation authority"
-membrane_role = "16/16 aarch64-apple-darwin depot. discovered alive Oct 20."
-
-[[hardware_mesh.gates]]
-name = "ironGate"
-ip = "192.168.4.237"
-status = "DOWN"
-cpu = "i9-14900K (24C/32T)"
-gpu = "RTX 5070 (12GB)"
-ram_gb = 96
-storage_tb = 3.6
-role = "agentic dev, composition validation, cross-builder"
-
-[[hardware_mesh.gates]]
-name = "strandGate"
-ip = "192.168.4.169"
-status = "DOWN"
-cpu = "Dual EPYC 7452 (64C/128T total)"
-gpu = "RTX 3090 (24GB) + RX 6950 XT (16GB)"
-npu = "BrainChip Akida AKD1000"
-ram_gb = 256
-storage_tb = 18
-role = "HPC, dual-vendor GPU validation, lattice QCD"
-membrane_role = "ONLY gate with both NVIDIA and AMD — dual-vendor sovereign path"
-
-[[hardware_mesh.gates]]
-name = "biomeGate"
-status = "DOWN"
-cpu = "Threadripper 3970X (32C/64T)"
-gpu = "2x Titan V (12GB HBM2) + 2x MI50 (16GB HBM2) + RTX 5060 (8GB)"
-npu = "BrainChip Akida AKD1000"
-ram_gb = 256
-storage_tb = 5
-role = "HBM2 sovereign compiler dev, hotSpring team"
-membrane_role = "56GB HBM2. Titan V 1:2 f64 = native f64 faster than df64."
-
-[[hardware_mesh.gates]]
-name = "westGate"
-status = "DOWN"
-cpu = "Ryzen 7 5700X (8C/16T)"
-gpu = "RTX 3070 (8GB)"
-ram_gb = 64
-storage_tb = 50.7
-role = "sovereign data NAS, 50.7TB ZFS raidz1, provenance root"
-membrane_role = "cold storage. loamSpine permanence data lives here at rest."
-
-[[hardware_mesh.gates]]
-name = "flockGate"
-ip = "NYC"
-status = "UP"
-cpu = "i9-13900K (24C/32T)"
-gpu = "RTX 3070 Ti (8GB)"
-ram_gb = 64
-wireguard = "10.13.37.6 (29ms to golgi)"
-role = "remote covalent mesh node (brother's node)"
-
-[[hardware_mesh.gates]]
-name = "golgi"
-ip = "VPS-NYC"
-status = "UP"
-vcpu = 1
-ram_gb = 2
-role = "Caddy TLS membrane, opsonize, skunkbat, songbird"
-membrane_role = "thin surface ONLY. <200MB RSS. all heavy compute refracts to LAN."
-
-[hardware_mesh.totals]
-cores_online = "44+ (eastGate 32 + sporeGate 12)"
-cores_fleet = "200+ (all gates)"
-ram_online_gb = "251 (eastGate 128 + northGate 96 + sporeGate 27)"
-ram_fleet_tb = "1.4"
-gpu_vram_online_gb = "44 (RTX 4070 12 + RTX 5090 32)"
-gpu_vram_fleet_gb = "244"
-storage_fleet_tb = "92+"
+[klein_fold.physics]
+neutron = "neutral — message passing — zero charge — carries information"
+proton = "human entropy — has MASS and CHARGE — weight in the system"
+electron = "bot traffic — light, fast, no mass"
+iteration = "the fold itself — output becomes input becomes output"
+gas = "noise, stale data, errors — must vent, not accumulate"
+singing = "when the membrane emits signal, gas still escapes through the fold"
