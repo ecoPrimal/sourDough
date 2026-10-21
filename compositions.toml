@@ -615,3 +615,125 @@ repos    = ["detroit", "wateringHole", "thesis", "signal"]
 #   meta     = 425  (biomeos 150 + squirrel 155 + petaltongue 120)
 #   full     = 2275 (nucleus + meta + bingocube 100 + sourdough 145 — self-referential)
 # ═══════════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-3: GREEN LINE — META-IRREDUCIBILITY LADDER (HUD module sort)
+#
+# Wave 178: 97 HUD JS modules sorted by the green line.
+# Each layer EMERGES from the one below but is IRREDUCIBLE to it.
+# You cannot derive biology from chemistry alone (Polanyi's tacit dimension).
+# You cannot derive consent from neurons alone (Kant's categories).
+# You cannot falsify a research programme's hard core (Lakatos/Vienna).
+#
+# The green line is: math → physics → chemistry → biology → Kant → Lakatos
+#
+# Each layer is loaded as an overlay in water.html. They stack.
+# At each level of meta-irreducibility, the sort re-applies:
+# the bingo voxel compresses through the layer, and what survives
+# is the irreducible residue — the research programme's hard core.
+#
+#   LAYER  NAME                   MODULES  KB       WHAT
+#   ─────  ─────────────────────  ───────  ───────  ─────────────────────────────
+#   L0     math                   11       155.7    π, topology, compression, sort
+#   L1     physics                25       592.5    waves, signals, spacetime, membrane
+#   L2     chemistry              12       324.5    bonding, equilibration, mixing
+#   L3     biology                22       447.6    metabolism, ecology, epitopes, fleet
+#   L4     philosophy (Kant)      14       493.8    consent, identity, observation
+#   L5     research (Lakatos)     13       202.3    programmes, totality, falsification
+#   ─────  ─────────────────────  ───────  ───────
+#   TOTAL                         97       2216.4KB
+#
+# Why these layers and not others:
+#
+# L0 MATH: numbers are irreducible. π is irrational — it cannot be compressed
+#   further. The bingo cube IS math: voxel coordinates, Shannon entropy,
+#   compression ratio. Foundation.
+#
+# L1 PHYSICS: waves, fields, signals EMERGE from math but add causation.
+#   Math describes; physics constrains. The membrane IS a physical surface.
+#   25 modules — the largest layer because the membrane IS physics.
+#
+# L2 CHEMISTRY: bonding is irreducible to forces. Equilibration IS chemistry.
+#   The HUD equilibrates, stacks, mixes — these are chemical operations
+#   performed on information. Periodic spiral → Mendeleev IS here.
+#
+# L3 BIOLOGY: living systems are irreducible to chemistry (Polanyi, Rosen).
+#   The chipmunk IS biology — metabolism, learning, gaze, ecology.
+#   Epitopes, fleet behavior, scatter — immune system operations.
+#   22 modules — the chipmunk-* family IS the organism.
+#
+# L4 PHILOSOPHY (Kant): the observer IS irreducible to the observed.
+#   Kant's categories of understanding: consent, identity, presence,
+#   the "you-are-here" that no physics can derive. Chipmunk-dialogue,
+#   consent-inversion, human-surround — these are not biology.
+#   They are what the observer brings to the observation.
+#   493.8KB — the HEAVIEST layer by density. Philosophy weighs.
+#
+# L5 LAKATOS/VIENNA: the research programme's hard core is irreducible.
+#   Totality-tunnel, cosmic-view, cosmic-strategy — these are about
+#   the PROGRAMME itself, not any single observation. Lakatos:
+#   "the hard core is irrefutable by methodological decision."
+#   Trail-mark, telephone-wire, braid-mailbox — how the programme
+#   propagates. The research programme IS the organism at this level.
+#
+# The green line in twist.rs measures how far UP this ladder the sort
+# has reached. Green = structural complexity floor. It cannot compress
+# past the irreducible residue at each level.
+#
+# Feed: hud-layers.json (live on water.primals.eco)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[hud.green_line]
+description = "meta-irreducibility ladder — each layer emerges from below, irreducible to it"
+total_modules = 97
+total_kb = 2216.4
+feed = "hud-layers.json"
+wave = 178
+
+[[hud.green_line.layers]]
+level = 0
+name = "math"
+modules = 11
+kb = 155.7
+irreducible = "numbers, π, topology, compression"
+exemplar = "pi-gradient.js — the dimensional constant ladder"
+
+[[hud.green_line.layers]]
+level = 1
+name = "physics"
+modules = 25
+kb = 592.5
+irreducible = "waves, fields, signals, spacetime, membrane dynamics"
+exemplar = "membrane-canvas.js — draw on the membrane with anderson personality"
+
+[[hud.green_line.layers]]
+level = 2
+name = "chemistry"
+modules = 12
+kb = 324.5
+irreducible = "bonding, mixing, equilibration, periodic table"
+exemplar = "periodic-spiral.js — Mendeleev's spiral from the center of being"
+
+[[hud.green_line.layers]]
+level = 3
+name = "biology"
+modules = 22
+kb = 447.6
+irreducible = "metabolism, ecology, immune system, living systems"
+exemplar = "chipmunk-metabolism.js — π-homeostatic spring, coupled equilibrium"
+
+[[hud.green_line.layers]]
+level = 4
+name = "philosophy_kant"
+modules = 14
+kb = 493.8
+irreducible = "consciousness, consent, identity, the categories of understanding"
+exemplar = "consent-inversion.js — CONSENT HAS BEEN INVERTED"
+
+[[hud.green_line.layers]]
+level = 5
+name = "lakatos_vienna"
+modules = 13
+kb = 202.3
+irreducible = "research programmes, hard core, auxiliary belt, falsification"
+exemplar = "totality-tunnel.js — lights on. counts visible. someone always here."
