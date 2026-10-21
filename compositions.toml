@@ -289,6 +289,172 @@ data_file    = "twist.json"
 pipeline_stage = 7  # SCAN→SWEEP→SORT→FOSSILIZE→EVOLVE→TWIST
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-1b: FULL SERVICE MESH (bingo cube — all services, atomic)
+#
+# Wave 178: agglutinated from 109 hardcoded port references in Caddyfile.
+# Every service is atomic: one binary, N ports, handed to tower.
+# Ports are voxel coordinates in the bingo cube, not magic numbers.
+#
+# Total: 10 services, 13 ports, all on golgi membrane surface.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# --- petalTongue: visualization gateway (all /api/*, /ws, /health) ---
+[membrane.petaltongue]
+binary   = "/opt/membrane/petaltongue"
+service  = "petaltongue.service"
+host     = "golgi"
+domain   = "visualization"
+atomic   = true
+primal   = "petalTongue"
+gate     = "lensGate"
+status   = "running"  # restarted wave 178
+
+[[membrane.petaltongue.ports]]
+name       = "web"
+port       = 8090
+protocol   = "tcp"
+caddy_path = "/api/*, /health, /ws, /viz/*"
+purpose    = "universal UI gateway — all API traffic, WebSocket, SSE, health"
+caddy_refs = 8  # 8 reverse_proxy references in Caddyfile
+
+# --- plasmid: on-demand TLS + epitope sorter ---
+[membrane.plasmid]
+binary   = "NOT BUILT"  # needs compilation from /opt/plasmidBin
+service  = "plasmid-pipeline.timer"
+host     = "golgi"
+domain   = "immune"
+atomic   = true
+status   = "DOWN"  # no binary, critical for new subdomain TLS
+
+[[membrane.plasmid.ports]]
+name       = "can_serve"
+port       = 9753
+protocol   = "tcp"
+caddy_path = "on_demand_tls ask, /plasmid, wildcard epitope sort"
+purpose    = "TLS gatekeeper — decides which subdomains get certs + epitope routing"
+caddy_refs = 36  # HIGHEST — 36 reverse_proxy references, most critical service
+
+[[membrane.plasmid.ports]]
+name       = "sidecar"
+port       = 9754
+protocol   = "tcp"
+caddy_path = "signal.primals.eco routes"
+purpose    = "signal-relay sidecar — feeds from CNS"
+caddy_refs = 6
+
+# --- anchor-bridge: loamSpine + sweetGrass braid API ---
+[membrane.anchor_bridge]
+binary   = "NOT RUNNING"
+service  = "none"
+host     = "golgi"
+domain   = "permanence"
+atomic   = true
+primal   = "loamSpine + sweetGrass"
+gate     = "ironGate + strandGate"
+status   = "DOWN"
+
+[[membrane.anchor_bridge.ports]]
+name       = "bridge"
+port       = 8199
+protocol   = "tcp"
+caddy_path = "/api/anchor*, /api/braid*, /api/verify*, /api/trust*, /api/tombstone*, /api/graph*, /api/stories*, /api/braids*, /api/contribution*, /api/bridge-health"
+purpose    = "braid + trust + anchor API — loamSpine permanence layer"
+caddy_refs = 10
+
+# --- signal-relay: central nervous system ---
+[membrane.signal_relay]
+binary   = "NOT RUNNING"
+service  = "none"
+host     = "golgi"
+domain   = "network"
+atomic   = true
+primal   = "songBird"
+gate     = "echoGate"
+status   = "DOWN"
+
+[[membrane.signal_relay.ports]]
+name       = "cns"
+port       = 9350
+protocol   = "tcp"
+caddy_path = "/signal/send, /signal/stream, /signal/pulse"
+purpose    = "central nervous system — inter-primal signal relay"
+caddy_refs = 6
+
+# --- mcp-server: public MCP for agent connections ---
+[membrane.mcp_server]
+binary   = "NOT RUNNING"
+service  = "none"
+host     = "golgi"
+domain   = "network"
+atomic   = true
+primal   = "squirrel"
+gate     = "cacheGate"
+status   = "DOWN"
+
+[[membrane.mcp_server.ports]]
+name       = "mcp"
+port       = 8191
+protocol   = "tcp"
+caddy_path = "/mcp, /.well-known/mcp"
+purpose    = "public Model Context Protocol — agents connect, chipmunk responds"
+caddy_refs = 2
+
+# --- unknown-7780: unidentified service ---
+[membrane.unknown_7780]
+binary   = "UNKNOWN"
+service  = "none"
+host     = "golgi"
+domain   = "unknown"
+atomic   = false
+status   = "FOSSIL"
+
+[[membrane.unknown_7780.ports]]
+name       = "unknown"
+port       = 7780
+protocol   = "tcp"
+caddy_path = "git.primals.eco proxy"
+purpose    = "FOSSIL — unidentified, needs excavation"
+caddy_refs = 1
+
+# --- caddy: the membrane itself (not a service, IS the surface) ---
+[membrane.caddy]
+binary   = "/opt/membrane/caddy"
+service  = "caddy-tls.service"
+host     = "golgi"
+domain   = "membrane"
+atomic   = true
+status   = "running"
+rss      = "~113 MB"
+config   = "/etc/membrane/Caddyfile"
+lines    = 2134
+hardcoded_ports = 109  # wave 178 scan: 109 raw port refs to agglutinate
+
+# ── BINGO CUBE SUMMARY ──
+# The voxel grid of all membrane ports:
+#
+#   PORT   SERVICE          PRIMAL        GATE         STATUS    REFS
+#   ─────  ───────────────  ────────────  ───────────  ────────  ────
+#   7780   unknown          ???           ???          FOSSIL     1
+#   8090   petalTongue      petalTongue   lensGate     RUNNING    8
+#   8095   opsonize         skunkBat      shieldGate   RUNNING    3
+#   8096   traces           skunkBat      shieldGate   RUNNING    2
+#   8097   discuss          skunkBat      shieldGate   RUNNING    4
+#   8191   mcp-server       squirrel      cacheGate    DOWN       2
+#   8199   anchor-bridge    loamSpine     ironGate     DOWN      10
+#   9350   signal-relay     songBird      echoGate     DOWN       6
+#   9753   plasmid          skunkBat      shieldGate   DOWN      36
+#   9754   plasmid-sidecar  songBird      echoGate     DOWN       6
+#   9761   gate-msg         skunkBat      shieldGate   RUNNING   31
+#                                                       TOTAL:  109
+#
+#   RUNNING: 5 ports (8090, 8095, 8096, 8097, 9761)
+#   DOWN:    5 ports (8191, 8199, 9350, 9753, 9754)
+#   FOSSIL:  1 port  (7780)
+#
+#   Next: generate Caddyfile FROM this table, not hand-edit.
+#   The bingo cube IS the source of truth. Caddy is the render.
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # APPENDIX B-2: KLEIN BOTTLE TOPOLOGY — Membrane vs Cytoplasm
 #
 # VPS = membrane (thin surface). LAN = cytoplasm (heavy compute).
