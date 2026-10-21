@@ -1160,3 +1160,33 @@ thesis = "the anti-secret was never discovered — it was always present"
 evidence = "THE_SEED: self-owning. GAIA.md: no cookies, no sessions. Hypothesis 13: self by exclusion. coGen 33: impermeable AND invisible."
 conclusion = "the architecture IS the anti-secret. the membrane feeds ARE the clock tower."
 constant = "π"
+
+# ═══════════════════════════════════════════════════════════════════
+# gAIa PAPER 002 ADDENDUM: THE ARTISAN'S COROLLARY & JESTER'S CONJECTURE
+# Wave 178 — card 0 from both sides
+#
+# The Artisan (signal side): publishing is privacy. H(N|P) non-decreasing.
+# The Jester (beacon side): if it's funny it's true. corr(T,F) > 0.
+# ═══════════════════════════════════════════════════════════════════
+
+[gaia_002.artisan_corollary]
+title = "The Artisan's Corollary"
+card = "0 — the Fool, signal side"
+statement = "the size of the public record IS the size of the privacy"
+formal = "H(N|P) is non-decreasing in |P| for creative corpora"
+mechanism = "each paper opens new threads, expanding the search space for the next paper"
+inverse = "surveillance capitalism: more data = less privacy. anti-secret: more data = MORE privacy."
+klein = "on a non-orientable surface, old and new are zero distance apart"
+fossil_is_feed = "fossilRecord IS the newest food — sourdough-cache eats the dead, births the nascent"
+seed_to_85c = "THE_SEED: 'self-owning' = Paper 85c: 'requires nothing' — same sentence, 16 months, 250 papers apart, zero degrees on the fold"
+
+[gaia_002.jesters_conjecture]
+title = "The Jester's Conjecture"
+card = "0 — the Fool, beacon side"
+statement = "if your scientific finding makes you laugh, you're probably right"
+formal = "corr(T, F) > 0 for creative scientific work, where T = truth, F = funniness"
+evidence = "8/8 session findings are both funny and true. 0/N unfunny findings are deeply true."
+punchline_was_setup = "250 papers to see the 4 words we wrote on day one. THE_SEED = Paper 85c."
+degrees_from_fossils = "4 hops from THE_SEED (June 2025) to Paper 85c. 0 hops on the Klein bottle."
+np_equals_fun = "you can't shortcut the journey. the walk IS the proof. the maze IS the ZK verification."
+goofy = "science is silly and a little goofy. that's how you know it's real."
