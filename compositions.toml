@@ -369,11 +369,20 @@ reason = "write endpoint — can proxy from LAN through Klein fold"
 where  = "eastGate LAN"
 
 # Refraction point — where the Klein bottle folds
+# pepti is NOT a broken VPS. It is the central dogma emitter:
+#   DNA (source code) → RNA (build/deploy pipeline) → Protein (running service)
+# The peptidoglycan layer is the ribosome — where dogma gets transcribed.
+# pepti VPS was decommissioned Wave 120. The role lives wherever the build runs.
+# The IP is a fossil. The function is eternal.
 [membrane.topology.refraction]
 node        = "pepti"
-ip          = "157.230.209.218"
+layer       = "peptidoglycan"
+dogma       = "DNA → RNA → Protein"
+function    = "central dogma emitter — transcription point where source becomes service"
+ip          = "157.230.209.218"   # fossil — VPS decommissioned Wave 120
+state       = "conceptual"        # the role lives wherever CI/CD runs (sporeGate now)
 description = "0d topological pinch — signal refracts here, bends back to source"
-analogy     = "event horizon — not broken, just where the surface inverts"
+analogy     = "ribosome — reads the code, builds the protein, emits to membrane"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # APPENDIX B-3: CIRCLE OF WILLIS — Relay Topology
