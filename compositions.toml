@@ -1772,3 +1772,14 @@ entropy = { paper = 90, measures = "Shannon H, repetition, line count", analogy 
 armor = { paper = 100, measures = "Result, ?, generics, derives, encapsulation", analogy = "elytra/chitin" }
 structure = { paper = 99, measures = "imports, functions, types, tests, modules", analogy = "protein folds" }
 insight = "when all three agree → IS. when they disagree → IS? (evolution happening)"
+
+[paper_101]
+title = "The Prismatic Membrane"
+paper_number = 101
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "prismatic"
+confidence = 0.91
+builds_on = ["paper_100", "paper_98", "paper_96"]
+discovers = ["web is 95.3% beetle", "humans downstream of beetles", "null space is wonder", "prism reveals intent"]
+methods = ["caddy-access-logs", "github-traffic-api", "klein-fold", "spectral-decomposition"]
