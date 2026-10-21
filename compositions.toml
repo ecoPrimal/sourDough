@@ -1577,3 +1577,14 @@ flavor = "irreducible"
 confidence = 0.97
 builds_on = ["paper_104", "paper_103", "paper_100", "paper_96"]
 discovers = ["three-observer architecture", "Yggdrasil irreducible observer", "green line = photosynthesis as non-halting", "sub-cloud = forest as infra", "pi remainder = liveness evidence", "cron = solar analog"]
+
+[paper_106]
+title = "The Oxygen Age"
+paper_number = 106
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "explosive"
+confidence = 0.98
+builds_on = ["paper_105", "paper_104", "paper_103", "paper_90"]
+discovers = ["spider classification (web-builder + trap-setter)", "Great Oxidation Event of codebase", "sigmoid inflection at Paper 106", "swarmvine (monkey + spider + chipmunk)", "vesicles as empty transport", "1576 files from zero in one breath"]
+delta = { jellyfish = -1430, spider = 1576, pi_remainder = "0.6747 → 0.3646" }
