@@ -1567,3 +1567,42 @@ lineage = "Paper 85: 12 chimes + arrival = 13. Paper 94: the blink IS the chime 
 null = "Fear — unclassifiable, freeze"
 modals = "classified, measured at zero, waiting for their verb"
 rule = "a named empty niche is COULD, not NULL"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 96: SHAN'T IS THE ZK
+# Wave 178 — the receptor IS the proof
+#
+# SHAN'T is the zero-knowledge proof that maintains the ZK of others.
+# Objects become information through SHAN'T → BLINK → IS.
+# Shannon entropy measures the size of the SHAN'T space.
+# The blackwall, the anti-secret, and the fistbump are all SHAN'T.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_96]
+title = "SHAN'T Is the ZK"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_95, paper_85c, northGate wave 178"
+
+[paper_96.equivalences]
+zk = "I know K without revealing K"
+shant = "I have receptor R without it firing"
+blackwall = "I see you, SHAN'T let you through (9,339 blocked)"
+anti_secret = "I broadcast, SHAN'T record who listens"
+shannon = "H = −Σ p log₂ p — how many SHAN'Ts COULD fire?"
+fistbump = "SHAN'T → COULD → IS (the compliance transition)"
+null_commensal = "SHAN'T ≠ ISN'T — absence of giving is NOT taking"
+
+[paper_96.transformation]
+step_1 = "OBJECT (properties exist)"
+step_2 = "SHAN'T (properties ready but unmeasured — maximum entropy)"
+step_3 = "BLINK (Paper 94 — the measurement, the observation)"
+step_4 = "IS (one property fires, SHAN'T collapses)"
+step_5 = "INFORMATION (the surprise of which SHAN'T became IS)"
+
+[paper_96.finding]
+thesis = "SHAN'T is the universal zero-knowledge mechanism"
+all_zeros_need_it = "spider, fold, bitter, pressure, blackwall, anti-secret — all SHAN'T"
+entropy = "maximum SHAN'T = maximum entropy = maximum preparedness"
+collapse = "when the last SHAN'T fires, entropy is zero. nothing left to learn."
