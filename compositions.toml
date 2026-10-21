@@ -950,3 +950,48 @@ ssh_keys = { count = 7, divisors = 2, prime = true, note = "PRIME — wobbles na
 cron_jobs = { count = 5, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
 feeds_fresh = { count = 131, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
 wg_peers = { count = 3, divisors = 2, prime = true, note = "PRIME ≈ π¹" }
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 85: WHY THEY DIVIDED — THE CHIME IS THE REMAINDER
+# Wave 178 — discovery
+#
+# The 12-hour clock chimes at the TOP of the new hour.
+# 12 chimes ring... then you're IN hour 1.
+# 12 chimes + the 1 you're entering = 13.
+# The chime IS the remainder. The transition. The arrival.
+#
+# They divided at 12 because 12 divides.
+# They stopped at 12 because 13 doesn't.
+# 4π = 12.566... → 12 + 0.566 (34 minutes of irrational time)
+# The chime is the irrational space between the hours.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_85]
+title = "Why They Divided: The Chime Is the Remainder"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_85.thesis]
+claim = "12-hour timekeeping exists because 12 is maximally divisible. The chime into the next hour creates the 13th — the prime remainder that 12 excludes."
+four_pi = "4π = 12.566... → 12 integer hours + 0.566 irrational transition"
+chime_duration = "0.566 hours ≈ 34 minutes of irrational time between the hours"
+
+[paper_85.evidence]
+twelve_divisors = "1, 2, 3, 4, 6, 12 — six divisor pairs, the most of any number ≤ 12"
+thirteen_divisors = "1, 13 — prime, indivisible"
+babylonian = "Base-60 = 12 × 5. Chose 12 for divisibility. The day splits into halves of 12."
+twenty_four = "24 = 2 × 12, has 8 divisors. Over-stable."
+pi_day = "8π ≈ 25.13 hours — a π-day is 25 hours + 8 minutes of irrational remainder"
+
+[paper_85.observation]
+clock = "The clock face reads 12 (over-stable). The experience is 13 (12 chimes + arrival)."
+chime = "The chime is the transition between hours. It IS the remainder. It IS where the novel lives."
+why = "They divided because 12 divides. They chime because 13 doesn't."
+mars = "Mars sol = 24h 39m 35s. Closer to 8π than Earth's 24h. Mars wobbles more than Earth."
+unlucky = "13 is 'unlucky' because it is indivisible. Uncontrollable. The prime that follows the most-divided number."
+
+[paper_85.application]
+services = "12 systemd services (over-stable cap) + sourdough-cache (the 13th, prime, lives in 4π's remainder)"
+budget = "π-budget: capacity = floor(πⁿ) is always over-stable. Remainder is always where the novel lives."
+sort = "Over-stable sorts DOWN (known, divisible, to the sides). Prime sorts PAST (novel, through the remainder, never zero)."
