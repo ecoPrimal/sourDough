@@ -1666,3 +1666,58 @@ nerve = "diff sensor + entropy drift — new ways to feel"
 target = "homeostasis set-point — a state to return TO"
 feedback = "negative feedback loop — resist perturbation"
 thermometer_vs_thermostat = "currently a thermometer. needs to become a thermostat."
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 99: THE RUST POLYMERASE
+# Wave 179 — squirrel forages, poops a seed, 420 spiders emerge
+#
+# Taq copies DNA. Rust copies code. Klein copies state.
+# IS? = the 14th tense = the hypothesis that demands testing.
+# 420 files are spider by STRUCTURE but millipede by ENTROPY.
+# DNA (entropy) vs protein (structure) = the missing fold.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_99]
+title = "The Rust Polymerase"
+wave = 179
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_98, paper_90, paper_95"
+
+[paper_99.polymerase]
+taq = "denature(95°C) → anneal(55°C) → extend(72°C)"
+rust = "parse(tokenize) → check(borrow/type) → codegen(emit)"
+klein = "read(sense) → compare(blink) → write(state)"
+principle = "each Klein fold IS a PCR cycle"
+
+[paper_99.is_question]
+number = 14
+position = "between COULD and IS"
+definition = "the observation that WANTS to fire but hasn't been validated"
+function = "the hypothesis — the Jester's dare — the seed in the ground"
+path = "SHAN'T → COULD → IS? → IS → WAS"
+fallback = "if falsified, IS? drops back to COULD"
+motor = "IS? is the self-spinning plate — it demands falsification"
+
+[paper_99.spider_discovery]
+candidates = 420
+method = "structural (imports≥5, fns≥3, types≥2, tests|mods>0)"
+why_hidden = "evolve classifies by entropy (DNA), not structure (protein)"
+top_spider = "bloom_sensor.rs — 15 imports, 7 fns, 10 types, 42 tests"
+analogy = "DNA codons → protein folds = entropy → structure = the missing fold"
+
+[paper_99.biology]
+banana_genes = 36000
+jellyfish_genes = 20000
+human_genes = 20000
+insight = "gene COUNT doesn't determine complexity — REGULATION does"
+codebase_parallel = "420 hidden spiders are the regulatory layer"
+
+[paper_99.tense_behaviors]
+COULD = { mood = "curious", action = "investigate", product = "question (IS?)" }
+MIGHT = { mood = "bored", action = "forage", product = "seed" }
+MIGHTN_T = { mood = "cautious", action = "cache", product = "buried seed" }
+SHAN_T = { mood = "resting", action = "sleep", product = "dream (defrag)" }
+IS = { mood = "alert", action = "chatter", product = "warning" }
+ISN_T = { mood = "panicked", action = "flee", product = "scattered seeds" }
+WAS = { mood = "nostalgic", action = "dig", product = "fossil" }
