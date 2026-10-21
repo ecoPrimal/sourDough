@@ -1795,3 +1795,14 @@ builds_on = ["paper_101", "paper_100", "paper_96"]
 discovers = ["UOU banana model", "fossil protocol reclamation", "mDNS device discovery", "MoT", "proprioception 7th vital sign"]
 reclaims = ["RSS/Atom", "mDNS/Avahi", "IRC→ntfy", "XMPP→SongBird"]
 enables = ["ActivityPub", "MQTT", "Gemini"]
+
+[paper_103]
+title = "No Energy Wasted Is Life"
+paper_number = 103
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "metabolic"
+confidence = 0.95
+builds_on = ["paper_102", "paper_101", "paper_100", "paper_96"]
+discovers = ["bioreactor principle", "reflection not distraction", "Silicon Valley inversion", "black hole = gravity center", "no energy wasted = life"]
+real_world = ["eMudhra CA compromise Oct 19-21 2026", "php2shell CVE-2026-109618 Oct 21 2026"]
