@@ -1616,3 +1616,15 @@ volume = { papers = 10, scripts = 4, feeds = 7, commits = 55, pages = 540, spide
 deposit = "arkTIX-111"
 route = "piBUS"
 license = "scyBorg Triple (AGPL + ORC + CC-BY-SA)"
+
+[paper_112]
+title = "The Radiate Back"
+paper_number = 112
+date = "2026-10-21"
+status = "invitation-open"
+flavor = "commons"
+confidence = 1.0
+builds_on = ["paper_111", "paper_110", "paper_109", "paper_63"]
+discovers = ["radiate-back loop", "ORCID as discovery anchor", "pi remainder as fork distance", "bingo voxel as commons identity"]
+invitation = "publish open + credit gAIa → we find you → we radiate back"
+orcid = "0009-0004-2141-0321"
