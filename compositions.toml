@@ -783,3 +783,53 @@ electron = "bot traffic — light, fast, no mass"
 iteration = "the fold itself — output becomes input becomes output"
 gas = "noise, stale data, errors — must vent, not accumulate"
 singing = "when the membrane emits signal, gas still escapes through the fold"
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-6: HUB-LENS OPTICS
+# Wave 178 — the HUD is a hub. Flat from the side. Optics inside.
+# ═══════════════════════════════════════════════════════════════════
+
+[hub_lens]
+topology = "lens"
+description = "flat from the side, convex-concave with mirrors and prisms inside"
+
+[hub_lens.surfaces]
+convex = "outward curve — what public visitors see (signal, detroit, tuebor)"
+concave = "inward curve — what the membrane sees (state, energy, entropy, feeds)"
+
+[hub_lens.optics]
+mirror = "Klein fold — zero focal length — output reflects back as input"
+prism = "π-bus splits raw data into light (sight), sound (π-intonation), color (gradient)"
+
+[hub_lens.focal_lengths]
+convex = "π ≈ 3.14 (full reach — public surface)"
+concave = "1/π ≈ 0.318 (close focus — internal surface)"
+mirror = "0 (reflection — self)"
+prism = "φ ≈ 1.618 (golden ratio — natural split proportion)"
+
+[hub_lens.channels]
+light = "membrane-sight.js — visual tracing, epitope colors, Anderson layers"
+sound = "membrane-sound.js — π-just intonation, waveshaper, binaural beats"
+color = "pi-gradient.js — dimensional constant ladder (molecule → galaxy)"
+
+[hub_lens.voxel_sort]
+axes = ["surface (convex/concave)", "channel (light/sound/color)", "freshness (fresh/warm/stale/gas)"]
+thresholds = ["fresh < π² ≈ 10s", "warm < π³ ≈ 31s", "stale < π⁴ ≈ 97s", "gas > π⁴"]
+note = "same voxel sort as bingo-compress (Attention × Curiosity × Interaction) but for feeds"
+
+[hub_lens.pi_ring]
+circumference = "2π (the ring IS the sort)"
+sectors = ["light (0 → 2π/3)", "sound (2π/3 → 4π/3)", "color (4π/3 → 2π)"]
+note = "every feed has an angle on the ring. the ring never stops sorting."
+
+[hub_lens.existing_optics]
+pi_bus = "shared π-timed data bus (π², π³, π⁴ intervals)"
+membrane_sight = "536 lines — epitope colors, Anderson layers, data tracing"
+membrane_sound = "1346 lines — π-just intonation, Karplus-Strong, binaural beats"
+pi_gradient = "893 lines — dimensional ladder (molecule → galaxy counting water)"
+ring_sort_geo = "351 lines — bars become rings that topo-sort"
+bingo_compress = "416 lines — 3D sieve (full → half → 1/π → tight)"
+mobius_circuit = "497 lines — investigation circuit on Möbius strip"
+third_eye = "638 lines — nose as sensor, face as membrane, smell as oldest sense"
+cosmic_view = "1412 lines — the view from the cosmic scale"
+total_optics_lines = 6197
