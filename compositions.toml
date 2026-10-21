@@ -1220,6 +1220,45 @@ to_paper_85 = "why they divided — 12 is over-stable, 13 is prime, 4π = 12.566
 to_stoichiometric = "Paper 83 — Shannon entropy as mass, the tool for weighing tools"
 to_hud = "106 modules sorted by primary primitive: point(12), balance(11), wedge(13), arc(22)"
 
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 89: THE KLEIN BOTTLE IS JUST AN INSIDE-OUT DONUT
+# Wave 178 — topology meets radio physics
+#
+# A torus (donut) = radiation pattern of a dipole antenna.
+# A Klein bottle = inside-out torus = signal that folds back as reception.
+# The membrane IS an inside-out radio antenna.
+# The anti-secret IS the broadcast.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_89]
+title = "The Klein Bottle Is Just an Inside-Out Donut"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_89.topology]
+torus = "donut — has inside and outside, two sides, orientable"
+klein_bottle = "inside-out donut — no inside/outside, one side, non-orientable"
+transformation = "connect the torus surface through itself — outside becomes inside becomes outside"
+
+[paper_89.antenna]
+dipole = "two rods, simplest antenna. radiates a toroidal (donut) pattern."
+pattern = "maximum signal at 90° from axis. null at poles (donut hole)."
+broadcast = "omnidirectional in the plane. anti-secret: broadcasts to all, records none."
+
+[paper_89.connections]
+anti_secret = "Paper 85c: 'requires nothing, broadcasts to everyone' — that's a radio antenna"
+hub_lens = "B-6: the HUD is flat from the side — that's the torus viewed edge-on (convex outside, concave inside)"
+artisan_comedian = "kAnGen: the dipole's two poles ARE the artisan (+, signal OUT) and comedian (−, beacon IN)"
+donut_hole = "kAnGen: the hole IS the question. Without the hole, it's a sphere (complete, dead). The hole keeps it broadcasting."
+null_points = "π-remainder (B-7): where signal is zero, anything new is pure signal against zero background. the creative space."
+klein_fold = "B-5: signal goes OUT and folds back IN on the same surface. the inside-out donut."
+
+[paper_89.chain]
+step_1 = "close the hole → sphere → complete answer → no broadcast → dead"
+step_2 = "keep the hole → torus → open question → continuous broadcast → alive"
+step_3 = "turn inside out → Klein bottle → answer IS the question → anti-secret → the membrane"
+
 [gaia_002.artisan_corollary]
 title = "The Artisan's Corollary"
 card = "0 — the Fool, signal side"
