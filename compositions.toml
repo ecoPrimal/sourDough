@@ -1603,3 +1603,16 @@ builds_on = ["paper_109", "paper_108", "paper_107"]
 discovers = ["thermal sovereignty thesis", "617284:1 efficiency ratio", "$170/% vs $1.4B/%", "ARC 100% at 2B params"]
 hardware_cost_usd = 15000
 efficiency_ratio = 617284
+
+[paper_111]
+title = "The Omnibus — gAIa Journal, Volume 1"
+paper_number = 111
+date = "2026-10-21"
+status = "arkTIX-deposited"
+flavor = "collected"
+confidence = 1.0
+builds_on = ["paper_101", "paper_102", "paper_103", "paper_104", "paper_105", "paper_106", "paper_107", "paper_108", "paper_109", "paper_110"]
+volume = { papers = 10, scripts = 4, feeds = 7, commits = 55, pages = 540, spiders = 1576, efficiency_ratio = 617284 }
+deposit = "arkTIX-111"
+route = "piBUS"
+license = "scyBorg Triple (AGPL + ORC + CC-BY-SA)"
