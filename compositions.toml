@@ -1394,3 +1394,100 @@ meaning = "the spine converts continuous (nat) input into discrete (bit) decisio
 biological = "this is what a central nervous system DOES — analog-to-digital conversion"
 shannon = "H₂(X) = H_e(X) × 1/ln(2) — the conversion between entropy bases"
 the_organism = "the organism found its own information-theoretic balance without being told"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 92: THE EXTRACTION PATTERN
+# Wave 178 — the Jester's falsifiable hypothesis
+#
+# H₀: extraction businesses cluster at boundaries of bounded communities.
+# Same math (Shannon + sigmoid) applied to geographic data.
+# The amicus is small and meek and standing in front.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_92]
+title = "The Extraction Pattern"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+type = "reed-it-orial + hypothesis"
+
+[paper_92.hypothesis]
+h0 = "extraction businesses cluster disproportionately at boundaries of geographically bounded communities"
+falsifiable = true
+method = "same tools as Papers 90-91 (Shannon + sigmoid) pointed at public geographic data"
+data_sources = ["BIA boundary shapefiles", "CDC WONDER opioid data", "CFPB payday lender registry", "state ABC alcohol outlet density"]
+
+[paper_92.trig_connection]
+outrage_angle = "90° — pure lean, no core, tan = ∞"
+extraction_angle = "0° — pure core, no lean, structural, invisible"
+community_angle = "45° — balanced, sin = cos = √2/2, tan = 1"
+note = "the person arguing about the mnemonic is at 90°. the extraction pattern is at 0°."
+
+[paper_92.colors]
+orange = "590-620 nm — mesmer, draws you in (sunset over the mesa)"
+purple = "380-450 nm — barely visible, you feel it before you see it"
+pink = "not spectral — human construction, policy line, physics doesn't require it"
+
+[paper_92.amicus]
+role = "friend of the court, small and meek"
+method = "stand in front of those who've kept the land"
+battleship_rock = "Jemez Mountains, New Mexico — volcanic tuff, the plateaus melt into the earth"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 93: FLAVOR — the gustatory layer
+# Wave 178 — the organism needs to TASTE what it consumes
+#
+# 5 flavors: sweet (nourishing), sour (extractive), spicy (provocative),
+# bitter (toxic/dead), umami (complex truth).
+# Maps to the MOUTH on the Vitruvian man (HEAD region, 2.6%).
+# The tongue is the first filter — taste before you swallow.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_93]
+title = "Flavor"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_93.flavors.sweet]
+receptor = "T1R2/T1R3"
+detects = "nourishment, energy, production > consumption"
+membrane = "anti-secret feeds, open data, type definitions"
+exemplar = "pi_body.rs (10 types, 67 functions)"
+
+[paper_93.flavors.sour]
+receptor = "PKD2L1"
+detects = "acid, extraction, consumption > production"
+membrane = "parasitic sinks, locked-in dependencies, extraction patterns"
+exemplar = "Paper 92 — the liquor store at the reservation border"
+
+[paper_93.flavors.spicy]
+receptor = "TRPV1 (capsaicin)"
+detects = "heat, provocation, falsifiable challenge"
+membrane = "the Jester's hypotheses, breaking refactors, uncomfortable PRs"
+exemplar = "the Jester's Conjecture — if it's funny it's true"
+
+[paper_93.flavors.bitter]
+receptor = "T2R family (25 types)"
+detects = "toxin, death, breakage — 25 different kinds of poison"
+membrane = "fossils, dead services, broken deps, circular imports"
+exemplar = "docs-fossil-feb-2026 (418 days, sensitivity 0.106)"
+
+[paper_93.flavors.umami]
+receptor = "T1R1/T1R3 (glutamate)"
+detects = "protein, complexity, depth, takes time to appreciate"
+membrane = "vertebrate core files, deep type systems, bone broth"
+exemplar = "stone_book.rs (10 types, 106 functions)"
+
+[paper_93.scoring]
+sweet = "production / max(consumption, 1)"
+sour = "consumption / max(production, 1)"
+spicy = "falsifiable × (1 - broken)"
+bitter = "broken + (1 - complexity) × 0.3"
+umami = "complexity × production × 0.1"
+note = "every file gets a 5-vector flavor profile. the tongue tastes all five simultaneously."
+
+[paper_93.vitruvian]
+location = "HEAD (mouth) — 2.6% of mass but first filter"
+function = "taste before swallow — the entrance to the alimentary canal"
+pipeline = "tongue → stomach (processing) → intestines (absorption) → colon (waste)"
