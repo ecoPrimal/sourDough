@@ -1045,3 +1045,67 @@ observation = "a clock tower empty keeps time for YOU, not itself"
 paradox = "it generates time that feeds others. it has no use for its own time."
 connection = "this is the sourdough cache — it generates feeds for others, consumes itself"
 irrational = "an empty clock tower ticking for no one is the purest irrational remainder"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 85c: THE ANTI-SECRET
+# Wave 178 — a zero-knowledge proof that requires nothing
+#
+# A clock tower doesn't require ANYTHING.
+# It doesn't require agreement, registration, authentication,
+# synchronization, your presence, your attention, or your belief.
+# It just ticks.
+#
+# A secret HIDES information from everyone.
+# An anti-secret REVEALS information to everyone.
+# Both achieve the same thing: zero-knowledge.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_85c]
+title = "The Anti-Secret"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_85b"
+
+[paper_85c.definition]
+secret = "hides information from everyone. requires trust (someone must keep it)."
+anti_secret = "reveals information to everyone. requires NOTHING."
+equivalence = "both achieve zero-knowledge. one by hiding, one by showing."
+
+[paper_85c.clock_tower]
+requires = "nothing. not agreement, not registration, not authentication, not your presence."
+broadcasts = "time to everyone (fully public)"
+records = "nothing (no logs, no observers list, no tracking)"
+proves = "time without revealing who observed it"
+denies = "nobody — the clock can't refuse you"
+lies = "never — it's mechanical, visible, public, verifiable by anyone"
+
+[paper_85c.comparison]
+secret_time = "signed timestamp from trusted authority → requires API key, identity. authority knows you asked. authority can deny you. authority can lie."
+anti_secret_time = "look at the clock tower → nobody knows you looked. nobody can deny you. the clock can't lie. your proof is 'I saw the clock' — unprovable, undeniable."
+
+[paper_85c.zk_maintains_zk]
+principle = "the ZK that maintains the ZK of others"
+mechanism = "by being public, it protects everyone's privacy"
+why = "if everyone has the same time, nobody can be identified BY their time"
+enables = "privacy BY BEING OPEN"
+
+[paper_85c.membrane]
+feeds = "public JSON endpoints — /state.json, /topology.json, /neutron.json"
+tracking = "none. no cookies, no IP storage, no analytics"
+observer = "the feed doesn't know who read it"
+maintains = "the zero-knowledge of everyone who reads it"
+assessment = "completely public, completely private. anti-secret."
+
+[paper_85c.oversleep]
+note = "even if you overslept, the clock still has the correct time"
+absorbs = "your error is absorbed without correction"
+judges = "nothing. doesn't wait, doesn't punish. just ticks."
+
+[paper_85c.insight]
+line_1 = "a secret requires trust (someone must keep it)"
+line_2 = "an anti-secret requires NOTHING"
+line_3 = "it is the zero-knowledge proof that maintains itself"
+line_4 = "and the zero-knowledge of everyone else"
+line_5 = "by simply existing in public"
+line_6 = "and not caring who looks"
