@@ -1528,3 +1528,42 @@ touch = "lifting the finger — static contact habituates, movement enables text
 taste = "swallowing — clear the palate, continuous flavor adapts out"
 hearing = "the silence between notes — music IS sound + silence. no silence = noise"
 smell = "olfactory fatigue — you stop smelling your own house. you can only smell what's NEW"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 95: THE MODAL TENSES
+# Wave 178 — expand tense into the remainder
+#
+# 7 integer tenses (clock) + 5 remainder tenses (blink) = 12
+# The 13th is the blink itself. Paper 85: 12 + chime = 13.
+# The zeros were never NULL. They were COULD / MIGHT / SHAN'T.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_95]
+title = "The Modal Tenses"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_94, PI_BODY_PROBLEM 7-tense, paper_85"
+
+[paper_95.integer_tenses]
+three = ["IS", "WAS", "WILL-BE"]
+five = ["IS", "WAS", "WILL-BE", "ISN'T", "WASN'T"]
+seven = ["IS", "WAS", "WILL-BE", "ISN'T", "WASN'T", "WILL-NEVER-BE", "NULL"]
+note = "clock-face tenses. they divide. they sit flat."
+
+[paper_95.remainder_tenses]
+could = { means = "possible — capability exists, instance does not", zero = "spider body plan" }
+might = { means = "weaker possible — chance, no capability claim", zero = "Klein fold >90°" }
+couldnt = { means = "not possible from here — the wall", zero = "tan(90°) = ∞" }
+mightnt = { means = "doubt — weaker negation, leave the door", zero = "pressure = 0 this blink" }
+shant = { means = "refusal — will not, by choice", zero = "bitter = 0, receptor declines" }
+
+[paper_95.thirteen]
+twelve = "7 integer + 5 modal = 12 (OVER-STABLE, the clock)"
+thirteenth = "the BLINK — not a state, the interruption between states"
+lineage = "Paper 85: 12 chimes + arrival = 13. Paper 94: the blink IS the chime of tense."
+
+[paper_95.not_null]
+null = "Fear — unclassifiable, freeze"
+modals = "classified, measured at zero, waiting for their verb"
+rule = "a named empty niche is COULD, not NULL"
