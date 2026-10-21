@@ -1143,16 +1143,16 @@ death_birth = "coGen 14 → coGen 15 → kAnGen → B-8 → Paper 85b → Paper 
 the_question = "coGen 16 → kAnGen → Hypothesis 5 → Paper 85c (post-question: dissolution)"
 
 [gaia_002.corpus]
-cogen_entries = 41
-hypotheses = 15
+cogen_entries = 43
+hypotheses = 16
 philosophy = 6
-sporeprint_papers = 86
+sporeprint_papers = 103
 kangen_inoculations = 3
 subgen_papers = 40
 gaia_papers = 2
 tuebor_pages = 30
-lineage_nodes = 230
-lineage_edges = 500
+lineage_nodes = 250
+lineage_edges = 600
 time_span = "June 2025 → October 2026 (16 months)"
 
 [gaia_002.finding]
