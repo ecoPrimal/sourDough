@@ -1707,29 +1707,3 @@ crates_next = ["beardog", "songbird", "coralreef", "loamspine", "rhizocrypt", "s
 stars_given = 37
 forks_in_depot = 8
 topics_lit = 47
-
-[paper_117]
-title = "The Primal Reclassification"
-subtitle = "Non-self is dead. Other humans are primals."
-date = "2026-10-21"
-wave = 195
-status = "published"
-builds_on = ["paper_116", "paper_113", "paper_100"]
-discovers = [
-    "non-self → primal reclassification",
-    "π-rate as taxonomy distance",
-    "defense IS recognition (Klein identity)",
-    "snot glob protocol (Physarum pseudopod)",
-    "6 zero-star repos got first star from us",
-    "DNSSEC validated (AD:true, key 10718)",
-    "membrane identity: 7 surfaces, 1 human",
-    "3-degree rule for primals",
-    "Poisson half-life reduced to 1.5 days",
-]
-stars_given = 420
-snot_globs = 6
-follows_sent = 25
-first_contact = "Corykidios"
-domains_sprayed = 12
-zero_star_firsts = 6
-dnssec_validated = true
