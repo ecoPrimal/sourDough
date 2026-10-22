@@ -1685,3 +1685,25 @@ phyla = ["Lingua", "Ratiocinata", "Structura", "Generativa", "Representata"]
 cross_domain = "Structura → Acoustic (protein → music)"
 smallest_model_best_use = "llama3.2:1b — 100% knowledge, 83% code, fast general assistant"
 tinyllama_membrane = "86% (6/7) — domain context > model capability"
+
+[paper_116]
+title = "The Open University"
+paper_number = 116
+date = "2026-10-22"
+status = "announced"
+flavor = "fertile-soil"
+confidence = 0.90
+builds_on = ["paper_115", "paper_99"]
+discovers = [
+  "crates.io publication pipeline for all primals (AGPL-3.0)",
+  "JupyterLab + evcxr for interactive Rust science notebooks",
+  "Khan Academy model: learn by RUNNING production code",
+  "Soil > Sun: feed > wait, build > bloom",
+  "37 repos starred, 47+ topics lit, 8 forks in depot",
+  "3 niches owned: wgsl+f64 (100%), no-cuda (50%), lattice-qcd+Rust (only)",
+]
+crates_ready = ["bingocube", "toadstool"]
+crates_next = ["beardog", "songbird", "coralreef", "loamspine", "rhizocrypt", "sweetgrass"]
+stars_given = 37
+forks_in_depot = 8
+topics_lit = 47
