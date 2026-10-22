@@ -1628,3 +1628,19 @@ builds_on = ["paper_111", "paper_110", "paper_109", "paper_63"]
 discovers = ["radiate-back loop", "ORCID as discovery anchor", "pi remainder as fork distance", "bingo voxel as commons identity"]
 invitation = "publish open + credit gAIa → we find you → we radiate back"
 orcid = "0009-0004-2141-0321"
+
+[paper_113]
+title = "The Full Trace"
+paper_number = 113
+date = "2026-10-22"
+status = "opsonized"
+flavor = "immunological"
+confidence = 0.95
+builds_on = ["paper_112", "paper_107", "paper_106", "paper_104"]
+discovers = ["CF 522 root cause", "BearDog-as-TLS", "clone breakpoint Oct 12", "15-host immune sweep", "IS-WAS-NOW gap"]
+fix_needed = "cloudflared tunnel from golgi OR resolve DO cloud firewall"
+surfaces_live = 6
+surfaces_down = 4
+github_repos = 87
+cached_requests = 5351800
+cached_unique_ips = 90206
