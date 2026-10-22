@@ -1644,3 +1644,21 @@ surfaces_down = 4
 github_repos = 87
 cached_requests = 5351800
 cached_unique_ips = 90206
+
+[paper_114]
+title = "The Phenotype"
+paper_number = 114
+date = "2026-10-22"
+status = "phase-transition"
+flavor = "convergent"
+confidence = 0.95
+builds_on = ["paper_113", "paper_90", "paper_91"]
+discovers = ["63.9% chaos stability", "jellyfish dominance 43.3%", "7.29:1 compression", "vertebrate deficit 1.1%", "membrane as spider"]
+pipeline = "genotype → chaos → arena → shannon → topo → voxel → digest"
+total_files = 45829
+dominant = "jellyfish"
+chaos_stability = 0.639
+vertebrate_ratio = 0.0149
+compression = 7.2932
+pi_remainder = 0.049721
+diagnosis = "phase transition — jellyfish needs bones"
