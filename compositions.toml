@@ -1662,3 +1662,26 @@ vertebrate_ratio = 0.0149
 compression = 7.2932
 pi_remainder = 0.049721
 diagnosis = "phase transition — jellyfish needs bones"
+
+[paper_115]
+title = "The Arena Taxonomy"
+paper_number = 115
+date = "2026-10-22"
+status = "published"
+flavor = "phylogenetic"
+confidence = 0.93
+builds_on = ["paper_114", "paper_90"]
+discovers = [
+  "Kingdom Silica — 5 phyla taxonomy of all AI models",
+  "chipMUNK scores ARE functional DNA (ICLR 2026 LLM DNA parallel)",
+  "gemma2:2b ≡ qwen2.5:7b (distance=0.0 — identical phenotype)",
+  "tinyllama 86% on membrane despite 26% MMLU — domain > model size",
+  "protein sonification: AlphaFold coordinates → MIDI (Structura → Acoustic)",
+  "membrane wraps all phyla: +20-48 points domain amplification",
+  "prefrontal cortex argument: model=backend, membrane=intelligence",
+]
+scripts = ["arena-taxonomy.py", "protein-sonify.py"]
+phyla = ["Lingua", "Ratiocinata", "Structura", "Generativa", "Representata"]
+cross_domain = "Structura → Acoustic (protein → music)"
+smallest_model_best_use = "llama3.2:1b — 100% knowledge, 83% code, fast general assistant"
+tinyllama_membrane = "86% (6/7) — domain context > model capability"
